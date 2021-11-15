@@ -3,8 +3,8 @@ import { Container } from "./styles";
 export function Navbar() {
   return (
     <Container>
-      <h2>Printers Stock</h2>
-      <h2>"Login Area"</h2>
+      <h3>Printers Stock</h3>
+      <h3>"Login Area"</h3>
     </Container>
   )
 };

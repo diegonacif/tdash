@@ -1,19 +1,23 @@
 import { createGlobalStyle } from 'styled-components';
+import { lighten } from 'polished';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
     --red: #e52e4d;
-    --green: #33cc95;
-    --green2: #04AA6D;
+    --green: #1a8e5f;
+    --green2: ${lighten(0.045, '#e8f3ef')};
+    --green3: #d6ede3;
     --blue: #5429cc;
+    --darkblue: #0314fa;
 
     --blue-light: #6933ff;
 
     --text-title: #363f5f;
     --text-body: #969cb3;
 
-    --background: #f0f2f5;
-    --shape: #ffffff
+    --background: #f5f6fa;
+    --shape: #ffffff;
+    --silver: #cacaca;
   }
 
   * {

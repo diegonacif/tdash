@@ -8,9 +8,8 @@ export const Container = styled.div`
     "sidebar mainTable";
   grid-template-columns: 280px auto;
   grid-template-rows: 8rem auto;
-  max-width: 1120px;
   grid-gap: 15px;
   height: 90vh;
   margin: 0 auto;
-  padding: 1.5rem 2.5rem;
+  padding: 2rem 1rem;
 `;

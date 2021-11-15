@@ -5,10 +5,16 @@ export const Container = styled.main`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  min-width: 1120px;
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   margin: 0 auto;
-  padding: 2rem;
-  background: var(--green2);
-  color: var(--shape)
+  padding: 1rem;
+  background: var(--green);
+  color: var(--shape);
+
+  h3 {
+    padding: 0;
+    margin: 0;
+  }
 `;
