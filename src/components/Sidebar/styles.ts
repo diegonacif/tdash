@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-  max-width: 1120px;
+  max-width: 280px;
   margin: 0;
   padding: 0 0.7rem;
   background-color: var(--shape);
   grid-area: sidebar;
   border-radius: 4px;
-
-  
   
   .filtersBackground {
     background-color: var(--green2);
