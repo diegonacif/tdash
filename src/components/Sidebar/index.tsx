@@ -1,6 +1,7 @@
 import { LogoContent } from "../LogoContent";
 import { Container } from "./styles";
 import { FaSearch } from "react-icons/fa";
+import TextField from '@material-ui/core/TextField';
 
 
 export function Sidebar() {
@@ -12,7 +13,14 @@ export function Sidebar() {
         <h3>Filtros</h3>
         <FaSearch />
         </div>
-        <label>
+        <TextField id="outlined-size-small" label="Cliente" size="small" margin="dense" color="success"/>
+        <TextField id="outlined-size-small" label="Equipamento" size="small" margin="dense" color="success" />
+        <TextField id="outlined-size-small" label="Status" size="small" margin="dense" color="success" />
+        <TextField id="outlined-size-small" type="date" InputLabelProps={{ shrink: true }} label="Data Inicial" size="small" margin="dense" color="success" />
+        <TextField id="outlined-size-small" type="date" InputLabelProps={{ shrink: true }} label="Data Final" size="small" margin="dense" color="success" />
+
+        
+        {/* <label>
           Cliente
           <input type="text" />
         </label>
@@ -34,7 +42,7 @@ export function Sidebar() {
         <input type="date" />
         
         <p>Data Final</p>
-        <input type="date" />
+        <input type="date" /> */}
       </div>
     </Container>
   )

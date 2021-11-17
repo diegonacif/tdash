@@ -16,6 +16,7 @@ export const Container = styled.main`
   .filtersTitle {
       padding: 0;
       margin: 0;
+      height: 3rem;
     h3 {
       text-align: center;
       padding: 0.5rem;
@@ -33,7 +34,7 @@ export const Container = styled.main`
     }
   }
 
-  p, label {
+  /* p, label {
     color: var(--text-title);
     font-weight: 600;
   }
@@ -49,5 +50,5 @@ export const Container = styled.main`
 
   select {
     background-color: var(--shape);
-  }
+  } */
 `;
