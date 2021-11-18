@@ -13,11 +13,49 @@ export function Sidebar() {
         <h3>Filtros</h3>
         <FaSearch />
         </div>
-        <TextField id="outlined-size-small" label="Cliente" size="small" margin="dense" color="success"/>
-        <TextField id="outlined-size-small" label="Equipamento" size="small" margin="dense" color="success" />
-        <TextField id="outlined-size-small" label="Status" size="small" margin="dense" color="success" />
-        <TextField id="outlined-size-small" type="date" InputLabelProps={{ shrink: true }} label="Data Inicial" size="small" margin="dense" color="success" />
-        <TextField id="outlined-size-small" type="date" InputLabelProps={{ shrink: true }} label="Data Final" size="small" margin="dense" color="success" />
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          label="Cliente" size="small"
+          margin="dense"
+          color="success"
+        />
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          label="Equipamento"
+          size="small"
+          margin="dense"
+          color="success"
+        />
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          label="Status"
+          size="small"
+          margin="dense"
+          color="success"
+        />
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          type="date"
+          InputLabelProps={{ shrink: true }}
+          label="Data Inicial"
+          size="small"
+          margin="dense"
+          color="success"
+        />
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          type="date"
+          InputLabelProps={{ shrink: true }}
+          label="Data Final"
+          size="small"
+          margin="dense"
+          color="success"
+        />
 
         
         {/* <label>
