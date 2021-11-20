@@ -5,6 +5,7 @@ export function LogoContent() {
   return (
     <Container>
       <img src={logo} alt="logo"/>
+      <span>Total Ink</span>
     </Container>
   )
 }

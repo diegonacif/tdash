@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { lighten } from "polished";
 
 export const Container = styled.div`
-  max-width: 1120px;
+  max-width: 100%;
+  min-width: 700px;
   margin: 0;
   padding: 1rem 2rem;
   background-color: var(--shape);
@@ -17,7 +18,7 @@ export const Container = styled.div`
 
   table {
     width: 100%;
-    min-width: 650px;
+    min-width: 700px;
     border-spacing: 0 0.5rem;
 
     tr:hover td {

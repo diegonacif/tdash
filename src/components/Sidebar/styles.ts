@@ -7,7 +7,7 @@ export const Container = styled.main`
   background-color: var(--shape);
   grid-area: sidebar;
   border-radius: 4px;
-  
+
   .filtersBackground {
     background-color: var(--green2);
     padding: 0.5rem;
@@ -26,29 +26,11 @@ export const Container = styled.main`
     }
     svg {
     position: relative;
-    top: -40px;
+    top: -36px;
     left: 65px;
     width: 20px;
     height: 20px;
     color: var(--green);    
     }
   }
-
-  /* p, label {
-    color: var(--text-title);
-    font-weight: 600;
-  }
-
-  input, select {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    height: 1.5rem;
-    margin-bottom: 0.7rem;
-    caret-color: var(--green2);
-  }
-
-  select {
-    background-color: var(--shape);
-  } */
 `;
