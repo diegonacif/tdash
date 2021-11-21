@@ -8,8 +8,8 @@ export const Container = styled.div`
     "sidebar summary"
     "sidebar mainTable";
   grid-template-columns: 280px auto;
-  grid-template-rows: 3rem 10rem auto;
-  grid-gap: 15px;
+  grid-template-rows: 3rem 5rem auto;
+  grid-gap: 1rem;
   height: 90vh;
   margin: 0 auto;
   padding: 0;

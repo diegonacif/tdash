@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   max-width: 280px;
-  margin: 0;
+  margin: 0 0 0 1rem;
   padding: 0 0.7rem;
   background-color: var(--shape);
   grid-area: sidebar;
