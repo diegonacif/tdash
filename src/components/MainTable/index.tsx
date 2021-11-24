@@ -2,36 +2,14 @@ import { Container } from "./styles";
 import { VscTrash } from 'react-icons/vsc';
 import { RiEditLine } from 'react-icons/ri';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { useEffect, useState } from "react";
-import { api } from '../../services/api'
 
-interface IResponse {
-  id: string;
-  description: string;
-  patrimony: number;
-  serial: string;
-  customer_id: string;
-  status: string;
-  supply: string;
-  updated_at: Date
-
-
-}
+import { useEquipments } from "../../hooks/listEquipments";
 
 
 export const MainTable = () => {
 
-  const [equipments, setEquipments] = useState<IResponse[]>([])
-  useEffect(() => {
-    api.get('equipments')
-      .then(response => {
-
-        setEquipments(response.data)
-
-      }).catch(error => console.log(error));
-
-
-  }, [])
+  const{equipments} = useEquipments()
+               
 
   return (
     <Container>
