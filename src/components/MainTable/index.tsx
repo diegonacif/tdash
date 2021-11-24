@@ -4,6 +4,7 @@ import { RiEditLine } from 'react-icons/ri';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { useEffect, useState } from "react";
 import { api } from '../../services/api'
+import { AddButton } from "../Buttons/AddButton";
 
 interface IResponse {
   id: string;
@@ -44,8 +45,8 @@ export const MainTable = () => {
             <th>Série</th>
             <th>Cliente</th>
             <th>Status</th>
-            <th>Suprimento</th>
             <th>Atualiação</th>
+            <th><AddButton /></th>
           </tr>
 
         </thead>
