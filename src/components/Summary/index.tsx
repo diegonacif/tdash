@@ -4,30 +4,36 @@ import { FiPackage } from 'react-icons/fi';
 import { RiStore3Line } from 'react-icons/ri';
 import { GrVmMaintenance } from 'react-icons/gr';
 import { MdOutlineSummarize } from 'react-icons/md';
-
-
+import { useEquipments } from "../../hooks/listEquipments";
 
 
 export function Summary() {
+  const { equipments } = useEquipments()
+  const qtdInEstock = equipments.reduce((total, equipment) => {
+    if (equipment.status === "in_stock") {
+      return total + 1;
+    }
+    return total
+  }, 0)
 
-   return (
-        <Container>
-      {/* <div>
-        <h2>
-          <p>Clientes</p>
-        </h2>
-        <strong>
-        <p>"Qtd de clientes"</p>
-        </strong>
-      </div>
-      <div>
-        <h2>
-          <p>Equipamentos</p>
-        </h2>
-        <strong>
-        <p>"Qtd de equipamentos"</p>
-        </strong>
-      </div> */}
+  const qtdInClient = equipments.reduce((total, equipment) => {
+    if (equipment.status === "in_client") {
+      return total + 1;
+    }
+    return total
+  }, 0)
+
+  const qtdUnderMaintenance = equipments.reduce((total, equipment) => {
+    if (equipment.status === "under_maintenance") {
+      return total + 1;
+    }
+    return total
+  }, 0)
+
+  const toralEquipments = qtdInEstock + qtdInClient + qtdUnderMaintenance
+
+  return (
+    <Container>  
       <Card>
         <div className="clientIcon">
           <BsPerson />
@@ -39,28 +45,28 @@ export function Summary() {
         <div className="instockIcon">
           <FiPackage />
         </div>
-        <h2>42</h2>
+        <h2>{qtdInEstock}</h2>
         <span>Em estoque</span>
       </Card>
       <Card>
         <div className="inClientIcon">
           <RiStore3Line />
         </div>
-        <h2>678</h2>
+        <h2>{qtdInClient}</h2>
         <span>Em cliente</span>
       </Card>
       <Card>
         <div className="inMaintenanceIcon">
           <GrVmMaintenance />
         </div>
-        <h2>45</h2>
+        <h2>{qtdUnderMaintenance}</h2>
         <span>Em manutenção</span>
       </Card>
       <Card>
         <div className="totalIcon">
           <MdOutlineSummarize />
         </div>
-        <h2>765</h2>
+        <h2>{toralEquipments}</h2>
         <span>Total</span>
       </Card>
     </Container>

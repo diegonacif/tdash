@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  border-bottom: 1px solid var(--silver);
+  border-bottom: 1px solid var(--text-body);
   margin-bottom: 1.5rem;
   padding: 1rem 0;
 
@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   img {
     margin: 0;
-    width: 100px;
+    width: 70px;
     padding: 0;
   }
 `;
