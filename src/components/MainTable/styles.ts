@@ -42,6 +42,9 @@ export const Container = styled.div`
       }
 
       td {
+
+
+        
         padding: 0.75rem 0.75rem;
         border: 0;
         background: var(--green2);
@@ -55,6 +58,7 @@ export const Container = styled.div`
           flex-direction: row;
           flex-wrap: nowrap;
           justify-content: center;
+
 
           button {
             

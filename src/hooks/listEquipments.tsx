@@ -7,7 +7,9 @@ interface Equipment {
     description: string;
     patrimony: number;
     serial: string;
-    customer_id: string;
+    customer:{
+        name:string
+    };
     status: string;
     supply: string;
     updated_at: Date

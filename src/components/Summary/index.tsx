@@ -10,21 +10,21 @@ import { useEquipments } from "../../hooks/listEquipments";
 export function Summary() {
   const { equipments } = useEquipments()
   const qtdInEstock = equipments.reduce((total, equipment) => {
-    if (equipment.status === "in_stock") {
+    if (equipment.status === "em estoque") {
       return total + 1;
     }
     return total
   }, 0)
 
   const qtdInClient = equipments.reduce((total, equipment) => {
-    if (equipment.status === "in_client") {
+    if (equipment.status === "em cliente") {
       return total + 1;
     }
     return total
   }, 0)
 
   const qtdUnderMaintenance = equipments.reduce((total, equipment) => {
-    if (equipment.status === "under_maintenance") {
+    if (equipment.status === "em manutenção") {
       return total + 1;
     }
     return total
@@ -39,7 +39,7 @@ export function Summary() {
           <BsPerson />
         </div>
         <h2>59</h2>
-        <span>Clientes</span>
+        <span>Total clientes</span>
       </Card>
       <Card>
         <div className="instockIcon">
@@ -67,7 +67,7 @@ export function Summary() {
           <MdOutlineSummarize />
         </div>
         <h2>{toralEquipments}</h2>
-        <span>Total</span>
+        <span>Total equip.</span> 
       </Card>
     </Container>
   )

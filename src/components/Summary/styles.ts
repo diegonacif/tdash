@@ -55,6 +55,7 @@ export const Card = styled.div`
     font-size: 85%;
     justify-self: start;
     padding-left: 0.6rem;
+    color:#808080
   }
 
   .clientIcon {
