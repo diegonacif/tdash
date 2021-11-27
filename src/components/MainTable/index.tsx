@@ -25,7 +25,7 @@ export const MainTable = () => {
             <th>Cliente</th>
             <th>Status</th>
             <th>Suprimento</th>
-            <th>Atualiação</th>
+            <th>Atualizado em</th>
           </tr>
 
         </thead>
@@ -38,7 +38,8 @@ export const MainTable = () => {
                 <td>{equipment.patrimony} </td>
                 <td>{equipment.serial}</td>
                 <td>{equipment.customer.name}</td>
-                <td className="statusColor">{equipment.status}</td>
+                <td>{equipment.status}</td>
+                <td>{equipment.supply}</td>
                 <td> {new Intl.DateTimeFormat('pt-BR').format(
                   new Date(equipment.updated_at)
                 )}</td>
