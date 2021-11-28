@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 import { VscTrash } from 'react-icons/vsc';
 import { RiEditLine } from 'react-icons/ri';
+import{FiPrinter} from 'react-icons/fi'
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 
 import {  useEquipments } from "../../hooks/listEquipments";
@@ -38,7 +39,11 @@ export const MainTable = () => {
                 <td>{equipment.patrimony} </td>
                 <td>{equipment.serial}</td>
                 <td>{equipment.customer.name}</td>
-                <td>{equipment.status}</td>
+                
+                <td className={equipment.status} >
+                {equipment.status === "" && "-"} <FiPrinter />                  
+                   {equipment.status} </td>
+                
                 <td>{equipment.supply}</td>
                 <td> {new Intl.DateTimeFormat('pt-BR').format(
                   new Date(equipment.updated_at)

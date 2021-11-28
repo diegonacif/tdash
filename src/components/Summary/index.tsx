@@ -10,27 +10,41 @@ import { useEquipments } from "../../hooks/listEquipments";
 export function Summary() {
   const { equipments } = useEquipments()
   const qtdInEstock = equipments.reduce((total, equipment) => {
-    if (equipment.status === "em estoque") {
+    if (equipment.status === "estoque") {
       return total + 1;
     }
     return total
   }, 0)
 
   const qtdInClient = equipments.reduce((total, equipment) => {
-    if (equipment.status === "em cliente") {
+    if (equipment.status === "cliente") {
       return total + 1;
     }
+    return total
+  }, 0)
+
+  const qtdNoConcert = equipments.reduce((total, equipment) => {
+    if (equipment.status === "sem conserto") {
+      return total + 1;
+    }    
+    return total
+  }, 0)
+
+  const qtdWaitingForParts = equipments.reduce((total, equipment) => {
+    if (equipment.status === "aguardando peças") {
+      return total + 1;
+    }    
     return total
   }, 0)
 
   const qtdUnderMaintenance = equipments.reduce((total, equipment) => {
-    if (equipment.status === "em manutenção") {
+    if (equipment.status === "manutenção") {
       return total + 1;
-    }
+    }    
     return total
   }, 0)
 
-  const toralEquipments = qtdInEstock + qtdInClient + qtdUnderMaintenance
+  const toralEquipments = qtdInEstock + qtdInClient + qtdUnderMaintenance + qtdNoConcert+ qtdWaitingForParts
 
   return (
     <Container>  

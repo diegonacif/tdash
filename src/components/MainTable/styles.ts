@@ -41,9 +41,26 @@ export const Container = styled.div`
         border-radius: 0;
       }
 
-      td {
+      td {  
+        &.estoque {
+        color:	#008000      
+      }
 
-
+      &.manutenção   {
+        color: 	#FFA500 
+        
+      }
+      &.cliente{
+        color: 	#1E90FF
+      }
+      &.aguardando{
+        color: 	#8B0000
+      }
+      &.sem{
+        color:#FF0000
+      }
+   
+    
         
         padding: 0.75rem 0.75rem;
         border: 0;
