@@ -1,10 +1,10 @@
 import { Container } from "./styles";
 import { VscTrash } from 'react-icons/vsc';
 import { RiEditLine } from 'react-icons/ri';
+import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { useEffect, useState } from "react";
 import { api } from '../../services/api'
-import { AddButton } from "../Buttons/AddButton";
 
 interface IResponse {
   id: string;
@@ -15,12 +15,13 @@ interface IResponse {
   status: string;
   supply: string;
   updated_at: Date
-
-
 }
 
+interface MainTableProps {
+  onOpenAddModal: () => void;
+}
 
-export const MainTable = () => {
+export const MainTable = ({ onOpenAddModal }: MainTableProps) => {  
 
   const [equipments, setEquipments] = useState<IResponse[]>([])
   useEffect(() => {
@@ -46,7 +47,12 @@ export const MainTable = () => {
             <th>Cliente</th>
             <th>Status</th>
             <th>Atualiação</th>
-            <th><AddButton /></th>
+            <th>
+              <button onClick={onOpenAddModal}>
+                <div className="addIcon"><RiAddFill size="18" /></div>
+                <div className="addText">Adicionar</div>
+              </button>
+            </th>
           </tr>
 
         </thead>

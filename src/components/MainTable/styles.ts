@@ -39,6 +39,44 @@ export const Container = styled.div`
         line-height: 1.5rem;
         font-size: 14px;
         border-radius: 0;
+
+        button {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          border: none;
+          width: 6rem;
+          height: 28px;
+          border-radius: 4px;
+          outline: none;
+          background-color: var(--green);
+          
+
+          svg {
+            margin-top: 3px;
+            margin-left: 0.3rem;
+            font-weight: bold;
+            color: var(--background);
+          }
+
+          .addText {
+            font-weight: bold;
+            color: var(--background);
+            text-align: end;
+            margin-right: 0.7rem;
+          }
+
+          &:hover {
+            filter: brightness(1.1);
+            transition-duration: 0.4s;
+            
+            .addText {
+              color: var(--shape);
+              transition-duration: 0.4s;
+            }
+          }
+        }
       }
 
       td {
