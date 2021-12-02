@@ -5,15 +5,15 @@ import{FiPrinter} from 'react-icons/fi'
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 
 import {  useEquipments } from "../../hooks/listEquipments";
+import { useState } from "react";
 
 
 
 export const MainTable = () => {
 
-  const{equipments} = useEquipments()
+  const {equipments} = useEquipments()
 
-    
-
+        
   return (
     <Container>
       <table>
@@ -28,13 +28,12 @@ export const MainTable = () => {
             <th>Suprimento</th>
             <th>Atualizado em</th>
           </tr>
-
-        </thead>
+          </thead>
         <tbody>
           {equipments.map(equipment => {
             return (
               <tr key={equipment.id}>
-                <td>1</td>
+                <td>{0}</td>
                 <td>{equipment.description}</td>
                 <td>{equipment.patrimony} </td>
                 <td>{equipment.serial}</td>

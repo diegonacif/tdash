@@ -40,7 +40,7 @@ export function TransactionsProvider({ children }: EquipmentsProviderProps) {
             }).catch(error => console.log(error));
 
     }, [])
-
+   
 
     return (
         <EquipmentsContext.Provider value={{ equipments }}>
