@@ -30,6 +30,10 @@ export const Container = styled.div`
 
     tr {
 
+      .dark-td {
+          color: var(--text-title);
+        }
+
       th {
         color: var(--green);
         background-color: var(--green3);
@@ -79,8 +83,8 @@ export const Container = styled.div`
         }
       }
 
-      td {
-        
+      td {       
+
         &.estoque {
           color: #008000;
 
@@ -253,11 +257,7 @@ export const Container = styled.div`
               border: 1px solid ${lighten (0.3, '#1a8e5f')};
             }
           }
-      }    
-
-        &:first-child {
-          color: var(--text-title);
-        }
+        }             
       }
     }
   }

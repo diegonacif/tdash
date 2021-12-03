@@ -53,9 +53,9 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
           {equipments.map(equipment => {
             return (
               <tr key={equipment.id}>
-                <td>{0}</td>
+                <td className="dark-td">{0}</td>
 
-                <td>{equipment.description}</td>
+                <td className="dark-td">{equipment.description}</td>
 
                 <td>{equipment.patrimony} </td>
 
