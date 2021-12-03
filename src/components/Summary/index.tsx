@@ -49,13 +49,6 @@ export function Summary() {
   return (
     <Container>  
       <Card>
-        <div className="clientIcon">
-          <BsPerson />
-        </div>
-        <h2>59</h2>
-        <span>Total clientes</span>
-      </Card>
-      <Card>
         <div className="instockIcon">
           <FiPackage />
         </div>
@@ -82,6 +75,13 @@ export function Summary() {
         </div>
         <h2>{toralEquipments}</h2>
         <span>Total equip.</span> 
+      </Card>
+      <Card>
+        <div className="clientIcon">
+          <BsPerson />
+        </div>
+        <h2>59</h2>
+        <span>Clientes</span>
       </Card>
     </Container>
   )
