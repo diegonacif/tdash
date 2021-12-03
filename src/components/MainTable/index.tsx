@@ -54,19 +54,30 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
             return (
               <tr key={equipment.id}>
                 <td>{0}</td>
+
                 <td>{equipment.description}</td>
+
                 <td>{equipment.patrimony} </td>
+
                 <td>{equipment.serial}</td>
+
                 <td>{equipment.customer.name}</td>
                 
-                <td className={equipment.status} >
-                {equipment.status === "" && "-"} <FiPrinter />                  
-                   {equipment.status} </td>
+                <td className={equipment.status}>
+                  {equipment.status === "" && "-"}
+                  <span>
+                    <FiPrinter />
+                  </span>
+                  <text>
+                    {equipment.status}
+                  </text>
+                </td>
                 
                 <td>{equipment.supply}</td>
                 <td> {new Intl.DateTimeFormat('pt-BR').format(
                   new Date(equipment.updated_at)
                 )}</td>
+
                 <td>
                   <div className="actionButtons">
                     <button className="show">
@@ -80,6 +91,7 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
                     </button>
                   </div>
                 </td>
+
               </tr>
 
 

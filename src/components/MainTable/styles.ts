@@ -79,26 +79,102 @@ export const Container = styled.div`
         }
       }
 
-      td {  
-        &.estoque {
-        color:	#008000      
-      }
-
-      &.manutenção   {
-        color: 	#FFA500 
+      td {
         
-      }
-      &.cliente{
-        color: 	#1E90FF
-      }
-      &.aguardando{
-        color: 	#8B0000
-      }
-      &.sem{
-        color:#FF0000
-      }
-   
-    
+        &.estoque {
+          color: #008000;
+
+          span {
+            background-color: ${lighten (0.56, '#1a8e5f')};
+            padding: 0.25rem;
+            border-radius: 50%;
+          }
+
+          svg {
+            position: relative;
+            top: 2px;
+          }
+
+          text {
+            padding-left: 4px;
+          }
+        }
+
+        &.manutenção {
+          color: #FFA500;
+
+          span {
+            background-color: ${lighten (0.44, '#FFA500')};
+            padding: 0.25rem;
+            border-radius: 50%;
+          }
+
+          svg {
+            position: relative;
+            top: 2px;
+          }
+
+          text {
+            padding-left: 4px;
+          }      
+        }
+
+        &.cliente {
+          color: #1E90FF;
+
+          span {
+            background-color: ${lighten (0.38, '#1E90FF')};
+            padding: 0.25rem;
+            border-radius: 50%;
+          }
+
+          svg {
+            position: relative;
+            top: 2px;
+          }
+
+          text {
+            padding-left: 4px;
+          }
+        }
+
+        &.aguardando {
+          color: #8B0000;
+
+          span {
+            background-color: ${lighten (0.66, '#8B0000')};
+            padding: 0.25rem;
+            border-radius: 50%;
+          }
+          
+          svg {
+            position: relative;
+            top: 2px;
+          }
+
+          text {
+            padding-left: 4px;
+          }
+        }
+
+        &.sem {
+          color: #FF0000;
+
+          span {
+            background-color: ${lighten (0.56, '#1a8e5f')};
+            padding: 0.25rem;
+            border-radius: 50%;
+          }
+
+          svg {
+            position: relative;
+            top: 2px;
+          }
+
+          text {
+            padding-left: 4px;
+          }
+        }    
         
         padding: 0.75rem 0.75rem;
         border: 0;

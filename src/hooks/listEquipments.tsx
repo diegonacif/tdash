@@ -45,7 +45,6 @@ export function TransactionsProvider({ children }: EquipmentsProviderProps) {
     return (
         <EquipmentsContext.Provider value={{ equipments }}>
             {children}
-
         </EquipmentsContext.Provider>
     )
 
