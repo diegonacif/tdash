@@ -27,7 +27,6 @@ interface MainTableProps {
 export const MainTable = ({ onOpenAddModal }: MainTableProps) => {  
 
   const {equipments} = useEquipments()
-
         
   return (
     <Container>
@@ -40,7 +39,8 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
             <th>Série</th>
             <th>Cliente</th>
             <th>Status</th>
-            <th>Atualiação</th>
+            <th>Suprimento</th>
+            <th>Atualização</th>
             <th>
               <button onClick={onOpenAddModal}>
                 <div className="addIcon"><RiAddFill size="18" /></div>
