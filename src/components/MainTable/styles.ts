@@ -108,15 +108,20 @@ export const Container = styled.div`
               position: relative;
               left: 1px;
             }
-          }
 
+          }
+          
           button.delete {
             background-color: ${lighten (0.4, '#e52e4d')};
             color: var(--red);
-
+            
             svg {
               position: relative;
               top: 3px;
+            }
+
+            &:hover {
+              border: 1px solid ${lighten (0.28, '#e52e4d')};
             }
           }
 
@@ -130,6 +135,10 @@ export const Container = styled.div`
               top: 2px;
               left: 2px;
             }
+
+            &:hover {
+              border: 1px solid ${lighten (0.45, '#000ecc')};
+            }
           }
 
           button.show {
@@ -141,6 +150,10 @@ export const Container = styled.div`
               position: relative;
               top: 3px;
               left: 0;
+            }
+
+            &:hover {
+              border: 1px solid ${lighten (0.3, '#1a8e5f')};
             }
           }
       }    
