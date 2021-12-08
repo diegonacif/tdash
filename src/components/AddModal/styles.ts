@@ -4,10 +4,10 @@ export const Container = styled.div`
   h2 {
     color: var(--text-title);
     font-size: 1.5rem;
-    margin-bottom: 2rem;    
+    margin-bottom: 1.5rem;    
   }
 
-  input {
+  /* input {
     width: 100%;
     padding: 0 1.5rem;
     height: 4rem;
@@ -26,7 +26,7 @@ export const Container = styled.div`
     & + input {
       margin-top: 1rem;
     }
-  }
+  } */
 
     button[type="submit"] {
     width: 100%;
@@ -41,9 +41,11 @@ export const Container = styled.div`
     margin-top: 1.5rem;
 
     transition: filter 0.2s;
+    transition: font-size 0.1s;
 
     &:hover {
       filter: brightness(1.1);
+      font-size: 1.05rem;
     }
   }
 `;

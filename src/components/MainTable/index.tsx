@@ -6,10 +6,10 @@ import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 
 import {  useEquipments } from "../../hooks/listEquipments";
-import { useState } from "react";
+//import { useState } from "react";
 
 
-interface IResponse {
+/* interface IResponse {
   id: string;
   description: string;
   patrimony: number;
@@ -18,7 +18,7 @@ interface IResponse {
   status: string;
   supply: string;
   updated_at: Date
-}
+} */
 
 interface MainTableProps {
   onOpenAddModal: () => void;

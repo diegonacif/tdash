@@ -1,10 +1,19 @@
+import { useState } from 'react';
+
 import { LogoContent } from "../LogoContent";
 import { Container } from "./styles";
 import { FaSearch } from "react-icons/fa";
+
 import TextField from '@material-ui/core/TextField';
+import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
+import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
+import DatePicker from '@material-ui/lab/DatePicker';
 
 
 export function Sidebar() {
+  const [value, setValue] = useState<Date | null>(null);
+
+
   return (
     <Container>
       <LogoContent />
@@ -57,30 +66,18 @@ export function Sidebar() {
           color="success"
         />
 
-        
-        {/* <label>
-          Cliente
-          <input type="text" />
-        </label>
+        {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DatePicker
+            className="initialDatePickerInput"
+            label="Data Inicial"
+            value={value}
+            onChange={(newValue) => {
+              setValue(newValue);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider> */}
 
-        <label>
-          Equipamento
-          <input type="text" />
-        </label>
-
-        <p>Status</p>
-        <select>
-          <option value="todos">Todos</option>
-          <option value="estoque">Estoque</option>
-          <option value="manutencao">Manutenção</option>
-          <option value="cliente">Em cliente</option>
-        </select>
-      
-        <p>Data Inicial</p>
-        <input type="date" />
-        
-        <p>Data Final</p>
-        <input type="date" /> */}
       </div>
     </Container>
   )

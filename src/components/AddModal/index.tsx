@@ -1,6 +1,9 @@
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg'
+import TextField from '@material-ui/core/TextField';
+
 import { Container } from './styles';
+
 
 interface AddModalProps {
   isOpen: boolean;
@@ -28,26 +31,42 @@ export function AddModal({ isOpen, onRequestClose } : AddModalProps) {
       <Container>
         <h2>Cadastrar equipamento</h2>
 
-        <input 
-          type="text"
-          placeholder="Modelo"
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          label="Modelo" size="small"
+          margin="dense"
+          color="success"
         />
 
-        <input
+        <TextField
+          fullWidth
           type="number"
-          placeholder="Tombo"
+          id="outlined-size-small"
+          label="Tombo"
+          size="small"
+          margin="dense"
+          color="success"
         />
 
-        <input
-          type="text"
-          placeholder="Nº de Série"
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          label="Nº de Série"
+          size="small"
+          margin="dense"
+          color="success"
         />
 
-        <input
-          type="text"
-          placeholder="Cliente"
+        <TextField
+          fullWidth
+          id="outlined-size-small"
+          label="Cliente"
+          size="small"
+          margin="dense"
+          color="success"
         />
-
+        
         <button type="submit">
           Cadastrar
         </button>

@@ -8,6 +8,25 @@ export const Container = styled.main`
   grid-area: sidebar;
   border-radius: 4px;
 
+
+  
+  .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+    margin-top: 0.5rem;
+    .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+      max-height: 2.6rem;
+    }
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+      margin: 0;
+      padding: 0;
+    }
+    
+  }
+   
+
+  div.MuiOutlinedInput-root {
+    color: #808080;
+  }
+
   .filtersBackground {
     background-color: var(--green2);
     padding: 0.5rem;
