@@ -1,9 +1,10 @@
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter} from 'react-router-dom';
 import { Dashboard } from './components/Dashboard';
 import { AuthProvider } from './hooks/authContext';
 import { EquipmentProvider } from './hooks/listEquipments';
-import Login from './pages/Login';
+
+import { Routes} from './routes';
 
 import { GlobalStyle } from './styles/global';
 
@@ -12,8 +13,7 @@ export function App() {
     <BrowserRouter>
     <AuthProvider>
       <EquipmentProvider>
-        <Login/>
-        <Dashboard />
+       <Routes />       
         <GlobalStyle />
       </EquipmentProvider>
     </AuthProvider>

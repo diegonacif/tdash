@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-//import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../hooks/authContext";
 
 import "./styles.css";
@@ -8,7 +8,7 @@ const Login: React.FC = () => {
   const [email, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //const history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     localStorage.removeItem("@PermissionYT:token");
