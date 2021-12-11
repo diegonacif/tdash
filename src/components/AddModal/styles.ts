@@ -1,6 +1,46 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  .row1 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+      .modelo {
+        width: 70%;
+        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+          width: 100%;
+        }
+      }
+    
+      .fabricante {        
+        width: 30%;
+        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+          width: 100%;
+        }
+      }
+  }
+
+  .row2 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+      .tombo {
+        width: 50%;
+        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+          width: 100%;
+        }
+      }
+    
+      .suprimento {        
+        width: 50%;
+        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+          width: 100%;
+        }
+      }
+  }
+
   h2 {
     color: var(--text-title);
     font-size: 1.5rem;

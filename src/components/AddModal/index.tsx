@@ -31,23 +31,48 @@ export function AddModal({ isOpen, onRequestClose } : AddModalProps) {
       <Container>
         <h2>Cadastrar equipamento</h2>
 
-        <TextField
-          fullWidth
-          id="outlined-size-small"
-          label="Modelo" size="small"
-          margin="dense"
-          color="success"
-        />
+        <div className="row1">
+          <div className="modelo">
+            <TextField
+              id="outlined-size-small"
+              label="Modelo" size="small"
+              margin="dense"
+              color="success"
+            />
+            
+          </div>
+          <div className="fabricante">
+            <TextField
+              id="outlined-size-small"
+              label="Fabricante" size="small"
+              margin="dense"
+              color="success"
+            />
+          </div>
+        </div>
 
-        <TextField
-          fullWidth
-          type="number"
-          id="outlined-size-small"
-          label="Tombo"
-          size="small"
-          margin="dense"
-          color="success"
-        />
+        <div className="row2">
+          <div className="tombo">
+            <TextField
+              type="number"
+              id="outlined-size-small"
+              label="Tombo"
+              size="small"
+              margin="dense"
+              color="success"
+            />
+          </div>
+
+          <div className="suprimento">
+            <TextField
+              id="outlined-size-small"
+              label="Suprimento"
+              size="small"
+              margin="dense"
+              color="success"
+            />
+          </div>
+        </div>
 
         <TextField
           fullWidth
@@ -62,6 +87,17 @@ export function AddModal({ isOpen, onRequestClose } : AddModalProps) {
           fullWidth
           id="outlined-size-small"
           label="Cliente"
+          size="small"
+          margin="dense"
+          color="success"
+        />
+
+        <TextField
+          fullWidth
+          multiline
+          maxRows={3}
+          id="outlined-size-small"
+          label="Observações"
           size="small"
           margin="dense"
           color="success"
