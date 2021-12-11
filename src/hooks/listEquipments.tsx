@@ -28,7 +28,7 @@ export const EquipmentsContext = createContext<EquipmentsContextData>(
     {} as EquipmentsContextData
 )
 
-export function TransactionsProvider({ children }: EquipmentsProviderProps) {
+export function EquipmentProvider({ children }: EquipmentsProviderProps) {
 
     const [equipments, setEquipments] = useState<Equipment[]>([])
 
@@ -37,7 +37,7 @@ export function TransactionsProvider({ children }: EquipmentsProviderProps) {
             .then(response => {
 
                 setEquipments(response.data)
-            }).catch(error => console.log(error));
+            }).catch(error => console.log(error));  
 
     }, [])
    
