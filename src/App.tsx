@@ -1,22 +1,25 @@
 
-import { BrowserRouter} from 'react-router-dom';
-import { Dashboard } from './components/Dashboard';
-import { AuthProvider } from './hooks/authContext';
-import { EquipmentProvider } from './hooks/listEquipments';
+import { BrowserRouter } from 'react-router-dom';
+import AppProvider from './hooks';
 
-import { Routes} from './routes';
+
+import { Routes } from './routes';
 
 import { GlobalStyle } from './styles/global';
 
 export function App() {
   return (
     <BrowserRouter>
-    <AuthProvider>
-      <EquipmentProvider>
-       <Routes />       
-        <GlobalStyle />
-      </EquipmentProvider>
-    </AuthProvider>
+
+      <AppProvider>
+
+        <Routes />
+
+
+      </ AppProvider >
+      <GlobalStyle />
+
+
     </BrowserRouter>
 
   );

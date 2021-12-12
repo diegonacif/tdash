@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { AddModal } from '../AddModal';
+import { AddModal } from '../../components/AddModal';
 
-import { MainTable } from "../MainTable";
-import { Navbar } from "../Navbar";
-import { Sidebar } from "../Sidebar";
-import { Summary } from "../Summary";
+
+import { MainTable } from "../../components/MainTable";
+import { Navbar } from "../../components/Navbar";
+import { Sidebar } from "../../components/Sidebar";
+import { Summary } from "../../components/Summary";
 import { Container } from "./styles";
 
 
@@ -26,7 +27,7 @@ export function Dashboard() {
       <Sidebar />
       <Summary />
       <MainTable onOpenAddModal={handleOpenAddModal} />
-      <AddModal 
+      <AddModal
         isOpen={isAddModalOpen}
         onRequestClose={handleCloseAddModal}
       />
