@@ -44,7 +44,7 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
             <th>Suprimento</th>
             <th>Atualização</th>
             <th>
-              <PermissionComponent role="ROLE_ADMIN">
+              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
                 <button onClick={onOpenAddModal}>
                   <div className="addIcon"><RiAddFill size="18" /></div>
                   <div className="addText">Adicionar</div>
@@ -87,12 +87,14 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
                     <button className="show">
                       <AiOutlineUnorderedList size={23} />
                     </button>
+                    <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
                     <button className="edit">
                       <RiEditLine size={23} />
                     </button>
                     <button className="delete">
                       <VscTrash size={23} />
                     </button>
+                    </PermissionComponent>
                   </div>
                 </td>
 

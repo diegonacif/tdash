@@ -3,10 +3,15 @@ import { api } from '../services/api'
 
 
 interface Equipment {
-    id: string;
+    id?: string;
     description: string;
     patrimony: number;
     serial: string;
+    count_initial?:number;
+    count_final?:number;
+    category?:{
+        name:string
+    };
     customer:{
         name:string
     };
