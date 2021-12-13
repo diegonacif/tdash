@@ -1,14 +1,26 @@
-import { Dashboard } from './components/Dashboard';
-import { TransactionsProvider } from './hooks/listEquipments';
+
+import { BrowserRouter } from 'react-router-dom';
+import AppProvider from './hooks';
+
+
+import { Routes } from './routes';
+
 import { GlobalStyle } from './styles/global';
 
-export function App() {  
+export function App() {
   return (
+    <BrowserRouter>
 
-    <TransactionsProvider>
-      <Dashboard />
+      <AppProvider>
+
+        <Routes />
+
+
+      </ AppProvider >
       <GlobalStyle />
-    </TransactionsProvider>
+
+
+    </BrowserRouter>
 
   );
 }

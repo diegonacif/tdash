@@ -5,7 +5,8 @@ import { FiPrinter } from 'react-icons/fi'
 import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 
-import {  useEquipments } from "../../hooks/listEquipments";
+import { useEquipments } from "../../hooks/listEquipments";
+import PermissionComponent from "../PermissionComponent";
 //import { useState } from "react";
 
 
@@ -24,11 +25,12 @@ interface MainTableProps {
   onOpenAddModal: () => void;
 }
 
-export const MainTable = ({ onOpenAddModal }: MainTableProps) => {  
+export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
 
-  const {equipments} = useEquipments()
-        
+  const { equipments } = useEquipments()
+
   return (
+
     <Container>
       <table>
         <thead>
@@ -42,13 +44,15 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
             <th>Suprimento</th>
             <th>Atualização</th>
             <th>
-              <button onClick={onOpenAddModal}>
-                <div className="addIcon"><RiAddFill size="18" /></div>
-                <div className="addText">Adicionar</div>
-              </button>
+              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+                <button onClick={onOpenAddModal}>
+                  <div className="addIcon"><RiAddFill size="18" /></div>
+                  <div className="addText">Adicionar</div>
+                </button>
+              </PermissionComponent>
             </th>
           </tr>
-          </thead>
+        </thead>
         <tbody>
           {equipments.map(equipment => {
             return (
@@ -62,17 +66,17 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
                 <td>{equipment.serial}</td>
 
                 <td>{equipment.customer.name}</td>
-                
+
                 <td className={equipment.status}>
                   {equipment.status === "" && "-"}
                   <span>
                     <FiPrinter />
                   </span>
-                  <text>
-                    {equipment.status}
-                  </text>
+
+                  {equipment.status}
+
                 </td>
-                
+
                 <td>{equipment.supply}</td>
                 <td> {new Intl.DateTimeFormat('pt-BR').format(
                   new Date(equipment.updated_at)
@@ -83,12 +87,14 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
                     <button className="show">
                       <AiOutlineUnorderedList size={23} />
                     </button>
+                    <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
                     <button className="edit">
                       <RiEditLine size={23} />
                     </button>
                     <button className="delete">
                       <VscTrash size={23} />
                     </button>
+                    </PermissionComponent>
                   </div>
                 </td>
 
