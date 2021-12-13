@@ -103,9 +103,11 @@ export function AddModal({ isOpen, onRequestClose } : AddModalProps) {
           color="success"
         />
         
-        <button type="submit">
-          Cadastrar
-        </button>
+        <div className="buttonContainer">
+          <button type="submit">
+            Cadastrar
+          </button>
+        </div>
       </Container>
     </Modal>
   )  
