@@ -44,7 +44,7 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
             <th>Suprimento</th>
             <th>Atualização</th>
             <th>
-              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN"> 
                 <button onClick={onOpenAddModal}>
                   <div className="addIcon"><RiAddFill size="18" /></div>
                   <div className="addText">Adicionar</div>

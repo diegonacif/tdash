@@ -20,9 +20,7 @@ const PrivateRoutes: React.FC<RoutesPropsData> = ({ role, ...rest }) => {
         }
     
         loadRoles();
-      }, []);
-
-
+      }, [role]);
 
     const { userLogged } = useAuth();
    

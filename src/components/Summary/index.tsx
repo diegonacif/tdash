@@ -5,6 +5,13 @@ import { RiStore3Line } from 'react-icons/ri';
 import { GrVmMaintenance } from 'react-icons/gr';
 import { MdOutlineSummarize } from 'react-icons/md';
 import { useEquipments } from "../../hooks/listEquipments";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+
+interface Customer {
+  id: string;
+  name: string;
+}
 
 
 export function Summary() {
@@ -46,6 +53,26 @@ export function Summary() {
 
   const toralEquipments = qtdInEstock + qtdInClient + qtdUnderMaintenance + qtdNoConcert+ qtdWaitingForParts
 
+// buscando todos os clientes
+const [customers, setCustomers] = useState<Customer[]>([])
+
+useEffect(() => {
+  api.get("customers")
+    .then(response => {
+      console.log(response.data)
+      setCustomers(response.data)
+    }).catch(error => console.log(error));
+
+}, [])
+
+const totalCustomers = customers.reduce((total, customer) => {
+  if (customer.id === customer.id) {
+    return total + 1;
+  }    
+  return total
+}, 0)
+
+
   return (
     <Container>  
       <Card>
@@ -80,7 +107,7 @@ export function Summary() {
         <div className="clientIcon">
           <BsPerson />
         </div>
-        <h2>59</h2>
+        <h2>{totalCustomers}</h2>
         <span>Clientes</span>
       </Card>
     </Container>

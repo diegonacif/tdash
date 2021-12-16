@@ -1,15 +1,32 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
 import { api } from '../services/api'
+import {useHistory} from 'react-router-dom'
 
+
+interface IRequestEquipment {
+    id: string;
+    description: string;
+    patrimony: number;
+    serial: string;
+    count_initial: number;
+    count_final: number;
+    category_id: string;
+    customer_id: string;
+    status: string;
+    obs:string;
+    supply: string;
+    transformer:number;
+    
+}
 
 interface Equipment {
-    id?: string;
+    id: string;
     description: string;
     patrimony: number;
     serial: string;
     count_initial?:number;
     count_final?:number;
-    category?:{
+    category:{
         name:string
     };
     customer:{
@@ -25,8 +42,11 @@ interface EquipmentsProviderProps {
 
 }
 
+type EquipmentInput = Omit<IRequestEquipment, "count_final" | "id">
+
 interface EquipmentsContextData {
     equipments: Equipment[],
+    createEquipment: (equipment: EquipmentInput) => Promise<void>
 }
 
 export const EquipmentsContext = createContext<EquipmentsContextData>(
@@ -42,12 +62,31 @@ export function EquipmentProvider({ children }: EquipmentsProviderProps) {
             .then(response => {
 
                 setEquipments(response.data)
-            }).catch(error => console.log(error));  
+            }).catch(error => console.log(error));
 
-    }, [])   
+    }, [])
+
+    //create novo equipamento
+    async function createEquipment(equipmentInput: EquipmentInput) {
+
+         const response = await api.post('equipments', {
+            ...equipmentInput,           
+        })
+        //console.log(setEquipments)
+        const equipment = response.data
+
+        setEquipments([
+            ...equipments,
+            equipment
+
+        ]);
+
+        
+    }
+
 
     return (
-        <EquipmentsContext.Provider value={{ equipments }}>
+        <EquipmentsContext.Provider value={{ equipments, createEquipment }}>
             {children}
         </EquipmentsContext.Provider>
     )

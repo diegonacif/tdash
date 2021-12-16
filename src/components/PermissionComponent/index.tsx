@@ -14,16 +14,16 @@ const PermissionComponent: React.FC<PermissionComponentProps> = ({
   useEffect(() => {
     async function loadRoles() {
       const response = await api.get("users/listRoles");
-      console.log(response.data);
+      
       const findRole = response.data.some((r: string) =>
         role?.split(",").includes(r)
       );
-      console.log(findRole);
+      
       setPermissions(findRole);
     }
 
     loadRoles();
-  }, []);
+  }, [role]);
 
   return <>{permissions && children}</>;
 };
