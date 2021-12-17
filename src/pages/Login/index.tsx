@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../hooks/authContext";
-
-import "./styles.css";
+import { Container } from './styles';
 
 const Login: React.FC = () => {
   const [email, setUserEmail] = useState("");
@@ -27,27 +26,36 @@ const Login: React.FC = () => {
   );
 
   return (
-    <form className="container" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="">Usuário </label>
-        <input
-          type="text"
-          onChange={(event) => setUserEmail(event.target.value)}
-        />
-      </div>
+    <Container>
+      {/* <div className="loginLogo"><span>TDash</span></div> */}
+      <div className="formContainer" onSubmit={handleSubmit}>
+        {/* <h2>Login</h2> */}
+        <div className="form-group">
+          <span className="logoArea" />
+          <label htmlFor="">Email</label>
+          <div className="inputIconEmail"></div>
+          <input
+            type="text"
+            onChange={(event) => setUserEmail(event.target.value)}
+            placeholder="Insira seu email"
+          />
+        </div>
 
-      <div className="form-group">
-        <label htmlFor="">Senha</label>
-        <input
-          type="password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
+        <div className="form-group">
+          <label htmlFor="">Senha</label>
+          <div className="inputIconPassword"></div>
+          <input
+            type="password"
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Insira sua senha"
+          />
+        </div>
 
-      <div className="form-group">
-        <button type="submit"> Entrar </button>
+        <div className="form-group">
+          <button type="submit">Entrar</button>
+        </div>
       </div>
-    </form>
+    </Container>
   );
 };
 
