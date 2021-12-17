@@ -21,9 +21,9 @@ const Login: React.FC = () => {
       event.preventDefault();
 
       await signIn({ email, password });
-      history.push("/dashboard");
+      history.push("dashboard");
     },
-    [email, password]
+    [email, password, history, signIn]
   );
 
   return (
