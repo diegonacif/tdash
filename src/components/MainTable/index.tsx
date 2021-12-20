@@ -4,9 +4,11 @@ import { RiEditLine } from 'react-icons/ri';
 import { FiPrinter } from 'react-icons/fi'
 import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
+import {Link} from 'react-router-dom'
 
 import { useEquipments } from "../../hooks/listEquipments";
 import PermissionComponent from "../PermissionComponent";
+
 //import { useState } from "react";
 
 
@@ -25,11 +27,14 @@ interface MainTableProps {
   onOpenAddModal: () => void;
 }
 
-export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
 
-  const { equipments } = useEquipments()
 
-  return (
+export const MainTable = ({ onOpenAddModal}: MainTableProps) => {
+
+  const { equipments} = useEquipments()
+
+  
+   return (
 
     <Container>
       <table>
@@ -44,7 +49,7 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
             <th>Suprimento</th>
             <th>Atualização</th>
             <th>
-              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN"> 
+              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
                 <button onClick={onOpenAddModal}>
                   <div className="addIcon"><RiAddFill size="18" /></div>
                   <div className="addText">Adicionar</div>
@@ -78,28 +83,31 @@ export const MainTable = ({ onOpenAddModal }: MainTableProps) => {
                 </td>
 
                 <td>{equipment.supply}</td>
+                
                 <td> {new Intl.DateTimeFormat('pt-BR').format(
                   new Date(equipment.updated_at)
                 )}</td>
 
                 <td>
                   <div className="actionButtons">
-                    <button className="show">
-                      <AiOutlineUnorderedList size={23} />
+                    <button className="show" >
+                     <Link to={`/equipamento/${equipment.id}`}> <AiOutlineUnorderedList size={23} /></Link>
                     </button>
                     <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
-                    <button className="edit">
-                      <RiEditLine size={23} />
-                    </button>
-                    <button className="delete">
-                      <VscTrash size={23} />
-                    </button>
-                    </PermissionComponent>
+                      <button className="edit">
+                        <RiEditLine size={23} />
+                      </button>
+                      </PermissionComponent>  
+                      <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+                      <button className="delete">
+                        <VscTrash size={23} />
+                      </button>
+                      </PermissionComponent>
+                   
                   </div>
                 </td>
 
               </tr>
-
 
             )
           })}

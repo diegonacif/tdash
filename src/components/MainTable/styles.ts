@@ -108,7 +108,7 @@ export const Container = styled.div`
           color: #FFA500;
 
           span {
-            background-color: ${lighten (0.44, '#FFA500')};
+            background-color: ${lighten (0.40, '#FFA500')};
             padding: 0.25rem;
             border-radius: 50%;
           }
@@ -165,7 +165,7 @@ export const Container = styled.div`
           color: #FF0000;
 
           span {
-            background-color: ${lighten (0.56, '#1a8e5f')};
+            background-color: ${lighten (0.45, '#FF0000')};
             padding: 0.25rem;
             border-radius: 50%;
           }

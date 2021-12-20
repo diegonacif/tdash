@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   img {
     margin: 0;
-    width: 70px;  
+    width: 65px;  
     padding: 0;
   }
 `;

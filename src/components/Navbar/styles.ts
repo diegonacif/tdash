@@ -18,4 +18,11 @@ export const Container = styled.main`
     padding: 0;
     margin: 0;
   }
+
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+ 
 `;

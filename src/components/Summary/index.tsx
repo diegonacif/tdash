@@ -58,21 +58,12 @@ const [customers, setCustomers] = useState<Customer[]>([])
 
 useEffect(() => {
   api.get("customers")
-    .then(response => {
-      console.log(response.data)
+    .then(response => {    
       setCustomers(response.data)
     }).catch(error => console.log(error));
 
 }, [])
-
-const totalCustomers = customers.reduce((total, customer) => {
-  if (customer.id === customer.id) {
-    return total + 1;
-  }    
-  return total
-}, 0)
-
-
+  
   return (
     <Container>  
       <Card>
@@ -107,7 +98,7 @@ const totalCustomers = customers.reduce((total, customer) => {
         <div className="clientIcon">
           <BsPerson />
         </div>
-        <h2>{totalCustomers}</h2>
+        <h2>{customers.length}</h2>
         <span>Clientes</span>
       </Card>
     </Container>

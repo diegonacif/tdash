@@ -2,15 +2,10 @@ import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg'
 
 import { Container } from './styles';
-import React, { FormEvent, useEffect, useState } from 'react';
+import{ FormEvent, useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { useEquipments } from '../../hooks/listEquipments';
 
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { TextField } from '@mui/material';
 
 
@@ -48,8 +43,6 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
   const [transformer, setTransformer] = useState(0)
 
 
-
-
   //buscar todas as categorias 
  
   const [categories, setCategories] = useState<Category[]>([])
@@ -57,7 +50,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
   useEffect(() => {
     api.get("categories")
       .then(response => {
-        console.log(response.data)
+        //console.log(response.data)
         setCategories(response.data)
       }).catch(error => console.log(error));
 
@@ -83,8 +76,6 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
 
   async function handleCreateNewEquipment(event: FormEvent) {
     event.preventDefault()
-
-
 
     await createEquipment({
       description,
@@ -135,6 +126,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
         <div className="row1">
           <div className="modelo">
             <TextField
+              required
               value={description}
               id="outlined-size-small"
               placeholder="Description"
@@ -152,6 +144,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
 
           <div className="tombo">
             <TextField
+              required
               value={patrimony}
               id="outlined-size-small"
               placeholder="Patrimônio"
@@ -166,6 +159,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
 
           <div className="suprimento">
             <TextField
+              required
               value={supply}
               id="outlined-size-small"
               placeholder="Suprimento"
@@ -183,7 +177,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
         <div className="row2">
 
           <div className="transformado">
-            <TextField
+            <TextField               
               value={transformer}
               id="outlined-size-small"
               placeholder="Transformador"
@@ -194,10 +188,10 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
             />
 
           </div>
-
-
+          
           <div className="serie">
             <TextField
+              required
               value={serial}
               id="outlined-size-small"
               placeholder="N-Serie"
@@ -212,29 +206,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
         </div>
 
         <div />
-
-      
-
-
-
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="demo-simple-select-helper-label">Categoria</InputLabel>
-          
-              <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-                value={category_id}
-                label="Cliente"
-                onChange={event => setCategory_id(event.target.value)}
-              >
-                 {categories.map((category) => {         
-              
-                <MenuItem key={category.name} value={category.id}>{category.name}</MenuItem>               
-              })}
-              </Select>
-          
-           
-          </FormControl>
+ 
 
           <div className="categoria">
 

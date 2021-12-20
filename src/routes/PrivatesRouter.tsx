@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect, Route, RouteProps } from "react-router-dom";
+import { Redirect, Route, RouteProps} from "react-router-dom";
 import { useAuth } from "../hooks/authContext";
 import {api} from "../services/api";
 
