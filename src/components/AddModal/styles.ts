@@ -68,24 +68,31 @@ export const Container = styled.form`
     }
   } */
 
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+
     button[type="submit"] {
-    width: 100%;
-    padding: 0 1.5rem;
-    height: 4rem;
-    background: var(--green);
-    color: #fff;
-    border-radius: 0.25rem;
-    border: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-
-    transition: filter 0.2s;
-    transition: font-size 0.1s;
-
-    &:hover {
-      filter: brightness(1.1);
-      font-size: 1.05rem;
+      width: 70%;
+      padding: 0 1.5rem;
+      height: 4rem;
+      background: var(--green);
+      color: #fff;
+      border-radius: 0.25rem;
+      border: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-left: auto;
+      margin-right: auto;
+  
+      transition: filter 0.2s;
+      transition: font-size 0.1s;
+  
+      &:hover {
+        filter: brightness(1.1);
+        font-size: 1.05rem;
+      }
     }
   }
 `;

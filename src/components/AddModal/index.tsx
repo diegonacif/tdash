@@ -8,8 +8,6 @@ import { useEquipments } from '../../hooks/listEquipments';
 
 import { TextField } from '@mui/material';
 
-
-
 interface Category {
   id: string;
   name: string;
