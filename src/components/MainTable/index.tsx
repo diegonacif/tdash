@@ -9,32 +9,13 @@ import {Link} from 'react-router-dom'
 import { useEquipments } from "../../hooks/listEquipments";
 import PermissionComponent from "../PermissionComponent";
 
-//import { useState } from "react";
 
+export const MainTable = () => {
 
-/* interface IResponse {
-  id: string;
-  description: string;
-  patrimony: number;
-  serial: string;
-  customer_id: string;
-  status: string;
-  supply: string;
-  updated_at: Date
-} */
-
-interface MainTableProps {
-  onOpenAddModal: () => void;
-}
-
-
-
-export const MainTable = ({ onOpenAddModal}: MainTableProps) => {
-
-  const { equipments} = useEquipments()
-
-  
-   return (
+   const { equipments, deletePost} = useEquipments() 
+   
+   
+   return ( 
 
     <Container>
       <table>
@@ -49,11 +30,14 @@ export const MainTable = ({ onOpenAddModal}: MainTableProps) => {
             <th>Suprimento</th>
             <th>Atualização</th>
             <th>
-              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
-                <button onClick={onOpenAddModal}>
+              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN"> 
+              <Link to="/novo-equipamento">
+              <button>             
                   <div className="addIcon"><RiAddFill size="18" /></div>
-                  <div className="addText">Adicionar</div>
+                  <div className="addText">Adicionar</div>                 
                 </button>
+                </Link>   
+            
               </PermissionComponent>
             </th>
           </tr>
@@ -96,10 +80,9 @@ export const MainTable = ({ onOpenAddModal}: MainTableProps) => {
                     <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
                       <button className="edit">
                         <RiEditLine size={23} />
-                      </button>
-                      </PermissionComponent>  
-                      <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
-                      <button className="delete">
+                      </button>                   
+                     
+                      <button type="submit" className="delete" onClick={()=>deletePost(equipment.id)}>
                         <VscTrash size={23} />
                       </button>
                       </PermissionComponent>

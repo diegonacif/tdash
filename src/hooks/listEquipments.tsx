@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
+import { useParams } from 'react-router-dom'
 import { api } from '../services/api'
-
 
 
 interface IRequestEquipment {
@@ -48,8 +48,11 @@ type EquipmentInput = Omit<IRequestEquipment, "count_final" | "id">
 
 interface EquipmentsContextData {
     equipments: Equipment[],
-    createEquipment: (equipment: EquipmentInput) => Promise<void>   
-   
+    createEquipment: (equipment: EquipmentInput) => Promise<void>
+    deletePost: (id: string) => Promise<void>
+
+
+
 
 }
 
@@ -57,19 +60,33 @@ export const EquipmentsContext = createContext<EquipmentsContextData>(
     {} as EquipmentsContextData
 )
 
-export function EquipmentProvider({ children }: EquipmentsProviderProps) {  
+export function EquipmentProvider({ children }: EquipmentsProviderProps) {
 
     const [equipments, setEquipments] = useState<Equipment[]>([])
 
     useEffect(() => {
         api.get("equipments")
-            .then(response => {          
+            .then(response => {
 
                 setEquipments(response.data)
             }).catch(error => console.log(error));
 
     }, [])
 
+    async function deletePost(id: string) {
+    
+        if(window.confirm("Deseja realmente excluir esse equipamneto?")){
+            await api.delete(`equipments/${id}`)
+
+            await api.get("equipments")
+                .then(response => {
+                    console.log(response.data)
+                    setEquipments(response.data)
+    
+                })
+        }
+      
+    }
 
     //create novo equipamento
     async function createEquipment(equipmentInput: EquipmentInput) {
@@ -86,10 +103,8 @@ export function EquipmentProvider({ children }: EquipmentsProviderProps) {
         ]);
     }
 
-
-
     return (
-        <EquipmentsContext.Provider value={{ equipments, createEquipment}}>
+        <EquipmentsContext.Provider value={{ equipments, createEquipment, deletePost }}>
             {children}
         </EquipmentsContext.Provider>
     )
