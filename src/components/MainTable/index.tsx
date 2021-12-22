@@ -4,18 +4,58 @@ import { RiEditLine } from 'react-icons/ri';
 import { FiPrinter } from 'react-icons/fi'
 import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
-import {Link} from 'react-router-dom'
-
-import { useEquipments } from "../../hooks/listEquipments";
+import { Link } from 'react-router-dom'
 import PermissionComponent from "../PermissionComponent";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+
+
+interface Equipment {
+  id: string;
+  description: string;
+  patrimony: number;
+  serial: string;
+  count_initial?: number;
+  count_final?: number;
+  category: {
+    name: string
+  };
+  customer: {
+    name: string
+  };
+  status: string;
+  obs?: string
+  supply: string;
+  updated_at: Date
+}
 
 
 export const MainTable = () => {
 
-   const { equipments, deletePost} = useEquipments() 
-   
-   
-   return ( 
+  const [data, setData] = useState<Equipment[]>([])
+  useEffect(() => {
+    api.get("equipments")
+      .then(response => {
+        setData(response.data)
+      }).catch(error => console.log(error));
+
+  }, [])
+
+
+  async function deleteEquipment(id: string) {
+
+    if (window.confirm("Deseja realmente excluir esse equipamneto?")) {
+      await api.delete(`equipments/${id}`)
+      await api.get("equipments")
+        .then(response => {
+          setData(response.data)
+
+        })
+    }
+
+  }
+
+  return (
 
     <Container>
       <table>
@@ -30,20 +70,20 @@ export const MainTable = () => {
             <th>Suprimento</th>
             <th>Atualização</th>
             <th>
-              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN"> 
-              <Link to="/novo-equipamento">
-              <button>             
-                  <div className="addIcon"><RiAddFill size="18" /></div>
-                  <div className="addText">Adicionar</div>                 
-                </button>
-                </Link>   
-            
+              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+                <Link to="/novo-equipamento">
+                  <button>
+                    <div className="addIcon"><RiAddFill size="18" /></div>
+                    <div className="addText">Adicionar</div>
+                  </button>
+                </Link>
+
               </PermissionComponent>
             </th>
           </tr>
         </thead>
         <tbody>
-          {equipments.map(equipment => {
+          {data.map(equipment => {
             return (
               <tr key={equipment.id}>
                 <td className="dark-td">{0}</td>
@@ -56,7 +96,7 @@ export const MainTable = () => {
 
                 <td>{equipment.customer.name}</td>
 
-                <td className={equipment.status}>
+                <td className={equipment.status} >
                   {equipment.status === "" && "-"}
                   <span>
                     <FiPrinter />
@@ -67,7 +107,7 @@ export const MainTable = () => {
                 </td>
 
                 <td>{equipment.supply}</td>
-                
+
                 <td> {new Intl.DateTimeFormat('pt-BR').format(
                   new Date(equipment.updated_at)
                 )}</td>
@@ -75,18 +115,18 @@ export const MainTable = () => {
                 <td>
                   <div className="actionButtons">
                     <button className="show" >
-                     <Link to={`/equipamento/${equipment.id}`}> <AiOutlineUnorderedList size={23} /></Link>
+                      <Link to={`/equipamento/${equipment.id}`}> <AiOutlineUnorderedList size={23} /></Link>
                     </button>
                     <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
                       <button className="edit">
                         <RiEditLine size={23} />
-                      </button>                   
-                     
-                      <button type="submit" className="delete" onClick={()=>deletePost(equipment.id)}>
+                      </button>
+
+                      <button type="submit" className="delete" onClick={() => deleteEquipment(equipment.id)}>
                         <VscTrash size={23} />
                       </button>
-                      </PermissionComponent>
-                   
+                    </PermissionComponent>
+
                   </div>
                 </td>
 

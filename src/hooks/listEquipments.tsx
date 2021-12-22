@@ -1,9 +1,8 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
-import { useParams } from 'react-router-dom'
 import { api } from '../services/api'
 
 
-interface IRequestEquipment {
+interface Equipment {
     id: string;
     description: string;
     patrimony: number;
@@ -19,37 +18,18 @@ interface IRequestEquipment {
 
 }
 
-interface Equipment {
-    id: string;
-    description: string;
-    patrimony: number;
-    serial: string;
-    count_initial?: number;
-    count_final?: number;
-    category: {
-        name: string
-    };
-    customer: {
-        name: string
-    };
-    status: string;
-    obs?: string
-    supply: string;
-    updated_at: Date
-}
-
 
 interface EquipmentsProviderProps {
     children: ReactNode
 
 }
 
-type EquipmentInput = Omit<IRequestEquipment, "count_final" | "id">
+type EquipmentInput = Omit<Equipment, "count_final" | "id">
 
 interface EquipmentsContextData {
     equipments: Equipment[],
     createEquipment: (equipment: EquipmentInput) => Promise<void>
-    deletePost: (id: string) => Promise<void>
+    deleteEquipment: (id: string) => Promise<void>
 
 
 
@@ -67,26 +47,10 @@ export function EquipmentProvider({ children }: EquipmentsProviderProps) {
     useEffect(() => {
         api.get("equipments")
             .then(response => {
-
                 setEquipments(response.data)
             }).catch(error => console.log(error));
 
     }, [])
-
-    async function deletePost(id: string) {
-    
-        if(window.confirm("Deseja realmente excluir esse equipamneto?")){
-            await api.delete(`equipments/${id}`)
-
-            await api.get("equipments")
-                .then(response => {
-                    console.log(response.data)
-                    setEquipments(response.data)
-    
-                })
-        }
-      
-    }
 
     //create novo equipamento
     async function createEquipment(equipmentInput: EquipmentInput) {
@@ -94,17 +58,31 @@ export function EquipmentProvider({ children }: EquipmentsProviderProps) {
         const response = await api.post('equipments', {
             ...equipmentInput,
         })
-        const equipment = response.data
 
+        const equipment = response.data
         setEquipments([
             ...equipments,
             equipment
 
         ]);
+
+    }
+    //deletar um
+    async function deleteEquipment(id: string) {
+        if (window.confirm("Deseja realmente excluir esse equipamneto?")) {
+            await api.delete(`equipments/${id}`)
+
+            await api.get("equipments")
+                .then(response => {
+                    setEquipments(response.data)
+
+                })
+        }
+
     }
 
     return (
-        <EquipmentsContext.Provider value={{ equipments, createEquipment, deletePost }}>
+        <EquipmentsContext.Provider value={{ equipments, createEquipment, deleteEquipment }}>
             {children}
         </EquipmentsContext.Provider>
     )

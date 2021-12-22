@@ -7,7 +7,7 @@ import { Container } from "./styles";
 
 
 
-export function Dashboard(id:string) {
+export function Dashboard() {
 
 
   return (

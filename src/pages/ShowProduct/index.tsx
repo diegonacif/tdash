@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { AiOutlineLeft } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar';
 import { Sidebar } from '../../components/Sidebar';
 import { Summary } from "../../components/Summary";
@@ -35,8 +37,6 @@ export const ShowProduct = (props: any) => {
   useEffect(() => {
     api.get(`equipments/show/${id}`)
       .then(response => {
-
-        console.log(response.data)
         setEquipment(response.data)
       })
   }, [id])
@@ -48,6 +48,9 @@ export const ShowProduct = (props: any) => {
       <Sidebar />
       <Summary />
       <Content>
+
+        <Link to="/dashboard"> <AiOutlineLeft /> </Link>
+
         <h1>Detalhe do Equipamento</h1>
 
         <div>
@@ -98,15 +101,15 @@ export const ShowProduct = (props: any) => {
           <span>{equipment?.created_at}</span>
         </div>
 
-        
+
         <div>
           <h3> Data última Atualização</h3>
-        <span>{equipment?.updated_at}</span>
+          <span>{equipment?.updated_at}</span>
         </div>
 
         <div>
           <h3> Observação</h3>
-        <span>{equipment?.obs}</span>
+          <span>{equipment?.obs}</span>
         </div>
 
 

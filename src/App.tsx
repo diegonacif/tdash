@@ -2,7 +2,8 @@
 import { BrowserRouter } from 'react-router-dom';
 
 import { AuthProvider } from './hooks/authContext';
-import { EquipmentProvider } from './hooks/listEquipments'
+import { EquipmentProvider } from './hooks/listEquipments';
+
 
 
 import { Routes } from './routes';

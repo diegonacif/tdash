@@ -1,6 +1,8 @@
+import swal from "sweetalert";
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../hooks/authContext";
+
 
 import "./styles.css";
 
@@ -20,13 +22,26 @@ const Login: React.FC = () => {
     async (event) => {
       event.preventDefault();
 
+      try {
+
       await signIn({ email, password });
       history.push("dashboard");
+   
+      } catch(e) {
+
+        swal({
+          title: "Oops",
+          text: "Usuário ou senha incorretos!",
+          icon: "error",
+        });        
+        
+      }
+
     },
     [email, password, history, signIn]
   );
 
-  return (
+  return (    
     <form className="container" onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="">Usuário </label>

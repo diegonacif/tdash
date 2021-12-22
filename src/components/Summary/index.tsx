@@ -33,39 +33,38 @@ export function Summary() {
   const qtdNoConcert = equipments.reduce((total, equipment) => {
     if (equipment.status === "sem conserto") {
       return total + 1;
-    }    
+    }
     return total
   }, 0)
 
   const qtdWaitingForParts = equipments.reduce((total, equipment) => {
     if (equipment.status === "aguardando peças") {
       return total + 1;
-    }    
+    }
     return total
   }, 0)
 
   const qtdUnderMaintenance = equipments.reduce((total, equipment) => {
     if (equipment.status === "manutenção") {
       return total + 1;
-    }    
+    }
     return total
   }, 0)
 
-  const toralEquipments = qtdInEstock + qtdInClient + qtdUnderMaintenance + qtdNoConcert+ qtdWaitingForParts
 
-// buscando todos os clientes
-const [customers, setCustomers] = useState<Customer[]>([])
+  // buscando todos os clientes
+  const [customers, setCustomers] = useState<Customer[]>([])
 
-useEffect(() => {
-  api.get("customers")
-    .then(response => {    
-      setCustomers(response.data)
-    }).catch(error => console.log(error));
+  useEffect(() => {
+    api.get("customers")
+      .then(response => {
+        setCustomers(response.data)
+      }).catch(error => console.log(error));
 
-}, [])
-  
+  }, [])
+
   return (
-    <Container>  
+    <Container>
       <Card>
         <div className="instockIcon">
           <FiPackage />
@@ -91,8 +90,8 @@ useEffect(() => {
         <div className="totalIcon">
           <MdOutlineSummarize />
         </div>
-        <h2>{toralEquipments}</h2>
-        <span>Total equip.</span> 
+        <h2>{equipments.length}</h2>
+        <span>Total equip.</span>
       </Card>
       <Card>
         <div className="clientIcon">
