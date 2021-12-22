@@ -50,6 +50,7 @@ const Login: React.FC = () => {
           <input
             type="text"
             onChange={(event) => setUserEmail(event.target.value)}
+            placeholder="Insira seu email"
             />
         </div>
 
@@ -59,6 +60,7 @@ const Login: React.FC = () => {
           <input
             type="password"
             onChange={(event) => setPassword(event.target.value)}
+            placeholder="Insira sua senha"
             />
         </div>
 

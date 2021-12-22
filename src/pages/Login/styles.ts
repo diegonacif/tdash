@@ -83,7 +83,7 @@ export const Container = styled.div`
 
     .inputIconEmail {
       position: absolute;
-      top: 43px;
+      top: 47px;
       left: 13px;
       background-image: url(${inputIconEmail});
       background-size: cover;
@@ -93,8 +93,8 @@ export const Container = styled.div`
 
     .inputIconPassword {
       position: absolute;
-      top: 44px;
-      left: 15px;
+      top: 47px;
+      left: 14px;
       background-image: url(${inputIconPassword});
       background-size: cover;
       width: 0.85rem;
