@@ -24,18 +24,18 @@ interface Customer {
 export const CreateProduct = () => {
 
 
-  const { createEquipment} = useEquipments()
+  const { createEquipment } = useEquipments()
 
   const [description, setDescription] = useState('')
   const [category_id, setCategory_id] = useState('')
   const [customer_id, setCustomer_id] = useState('')
-  const [patrimony, setPatrimony] = useState(0)
+  const [patrimony, setPatrimony] = useState('')
   const [serial, setSerial] = useState('')
   const [supply, setSupply] = useState('')
-  const [count_initial, setCount_initial] = useState(0)
+  const [count_initial, setCount_initial] = useState('')
   const [status, setStatus] = useState('')
   const [obs, setObs] = useState('')
-  const [transformer, setTransformer] = useState(0)
+  const [transformer, setTransformer] = useState('')
 
 
 
@@ -67,7 +67,6 @@ export const CreateProduct = () => {
     status: "estoque" || "cliente" || "manutenção" || "aguardando peças" || "sem conserto",
   };
 
-
   async function handleCreateNewEquipment(event: FormEvent) {
     event.preventDefault()
 
@@ -86,13 +85,13 @@ export const CreateProduct = () => {
     setDescription('')
     setCategory_id('')
     setCustomer_id('')
-    setPatrimony(0)
+    setPatrimony('')
     setSerial('')
     setSupply('')
-    setCount_initial(0)
+    setCount_initial('')
     setStatus('')
     setObs('')
-    setTransformer(0)
+    setTransformer('')
   }
 
   return (
@@ -131,13 +130,14 @@ export const CreateProduct = () => {
             <div className="tombo">
               <TextField
                 required
+                type="number"
                 value={patrimony}
                 id="outlined-size-small"
                 placeholder="Patrimônio"
                 label="Patrimônio" size="small"
                 margin="dense"
                 color="success"
-                onChange={event => setPatrimony(Number(event.target.value))}
+                onChange={event => setPatrimony((event.target.value))}
               />
 
             </div>
@@ -164,13 +164,14 @@ export const CreateProduct = () => {
 
             <div className="transformado">
               <TextField
+                type="number"
                 value={transformer}
                 id="outlined-size-small"
                 placeholder="Transformador"
                 label="Transformador" size="small"
                 margin="dense"
                 color="success"
-                onChange={event => setTransformer(Number(event.target.value))}
+                onChange={event => setTransformer((event.target.value))}
               />
 
             </div>
@@ -197,7 +198,7 @@ export const CreateProduct = () => {
           <div className="categoria">
 
             <select onChange={event => setCategory_id(event.target.value)} value={category_id} required>
-              <option selected disabled hidden>Categoria</option>
+              <option value="">Categoria</option>
               {categories.map((category) => (
                 <option key={category.name} value={category.id} >{category.name}</option>
               ))}
@@ -206,7 +207,7 @@ export const CreateProduct = () => {
 
           <div className="cliente">
             <select onChange={event => setCustomer_id(event.target.value)} value={customer_id} required>
-              <option selected disabled hidden>Cliente</option>
+              <option value="">Cliente</option>
               {customers.map((customer) => (
                 <option key={customer.name} value={customer.id}>{customer.name}</option>
               ))}
@@ -222,7 +223,7 @@ export const CreateProduct = () => {
                 label="Contador Inicial" size="small"
                 margin="dense"
                 color="success"
-                onChange={event => setCount_initial(Number(event.target.value))}
+                onChange={event => setCount_initial((event.target.value))}
               />
 
             </div>
@@ -232,9 +233,8 @@ export const CreateProduct = () => {
             <div className="status">
 
               <div className="status">
-                <select onChange={event => setStatus(event.target.value)}
-
-                > <option selected disabled hidden>Status</option>
+                <select onChange={event => setStatus(event.target.value)} required>
+                  <option value="">Status</option>
                   <option value={selectStatus.status = "estoque"}>estoque</option>
                   <option value={selectStatus.status = "cliente"}>cliente</option>
                   <option value={selectStatus.status = "manutenção"}>manutenção</option>

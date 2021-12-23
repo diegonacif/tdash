@@ -41,7 +41,7 @@ export const MainTable = () => {
 
   }, [])
 
-
+  // Deletar um equipamento
   async function deleteEquipment(id: string) {
 
     if (window.confirm("Deseja realmente excluir esse equipamneto?")) {
@@ -110,7 +110,7 @@ export const MainTable = () => {
 
                 <td> {new Intl.DateTimeFormat('pt-BR').format(
                   new Date(equipment.updated_at)
-                )}</td>
+                )}</td> 
 
                 <td>
                   <div className="actionButtons">

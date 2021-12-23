@@ -11,11 +11,39 @@ import { api } from "../../services/api";
 interface Customer {
   id: string;
   name: string;
+} 
+
+interface Equipment {
+  id: string;
+  description: string;
+  patrimony: number;
+  serial: string;
+  count_initial: number;
+  count_final: number;
+  category_id: string;
+  customer_id: string;
+  status: string;
+  obs: string;
+  supply: string;
+  transformer: number;
+
 }
 
 
 export function Summary() {
-  const { equipments } = useEquipments()
+  
+  const [equipments, setEquipments] = useState<Equipment[]>([])
+
+
+  useEffect(() => {
+    api.get("equipments")
+        .then(response => {
+            setEquipments(response.data)
+        }).catch(error => console.log(error));
+
+}, [])
+
+ 
   const qtdInEstock = equipments.reduce((total, equipment) => {
     if (equipment.status === "estoque") {
       return total + 1;

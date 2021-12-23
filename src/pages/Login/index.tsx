@@ -20,7 +20,7 @@ const Login: React.FC = () => {
 
   const handleSubmit = useCallback(
     async (event) => {
-      event.preventDefault();
+      event.preventDefault(); 
 
       try {
 
