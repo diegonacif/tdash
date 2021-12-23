@@ -10,20 +10,23 @@ export function Navbar() {
 
   return (
     <Container>
-      <h3>Printers Stock</h3>
+      <h3>TDash Project</h3>
 
-      <img
-          src={avatar}
-          alt="avatar"
-        />
-        <p>{user.name} </p>
+      <div className="loginArea">
+        <img
+            src={avatar}
+            alt="avatar"
+          />
+          <p>{user.name} </p>
 
-      <h3>
-      
-        <button type="button" onClick={signOut}>
-          <FiPower size={20} />
-        </button>
-      </h3>
+        <h3>
+        
+          <button type="button" onClick={signOut}>
+            <FiPower size={20} />
+          </button>
+        </h3>
+      </div>
+
     </Container>
   )
 };
