@@ -21,6 +21,15 @@ export const Container = styled.main`
     align-items: center;
     gap: 0.6rem;
 
+    .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+      min-width: 1rem;
+      padding: 6px 3px;
+
+      &:hover {
+        background-color: ${lighten (0.03, '#1a8e5f')};
+      }
+    }
+
     h3 {
       padding: 0;
       margin: 0;
@@ -34,14 +43,16 @@ export const Container = styled.main`
       width: 36px;
       height: 36px;
       border-radius: 50%;
+      border: 0;
     }
 
     button {
       border-radius: 0.5rem;
+      border: 0;
       color: #000000;
+      transition: background-color 0.5s;
 
       &:hover {
-        background-color: var(--green);
         background-color: ${lighten (0.56, '#1a8e5f')};
       }
     }
