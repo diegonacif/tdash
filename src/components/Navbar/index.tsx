@@ -2,7 +2,6 @@ import * as React from 'react';
 /* import { FiPower } from "react-icons/fi"; */
 import { Container } from "./styles";
 import { useAuth } from '../../hooks/authContext'
-import avatar from '../../assets/avatar.jpg'
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
@@ -24,11 +23,13 @@ export function Navbar() {
     <Container>
       <h3>TDash Project</h3>
 
-      <div className="loginArea">
-        <img
+      <div className="loginArea">            
+        <div className="loginAvatarArea">
+          {/* <img
             src={avatar}
             alt="avatar"
-          />
+          /> */}
+        </div>
         
         <p>{user.name} </p>
 
@@ -53,7 +54,7 @@ export function Navbar() {
             }}
           >
             <MenuItem onClick={handleClose}>Perfil</MenuItem>
-            <MenuItem onClick={handleClose}>Minha Conta</MenuItem>
+            <MenuItem onClick={handleClose}>Gerenciar Usuários</MenuItem>
             <MenuItem onClick={signOut}>Logout</MenuItem>
           </Menu>
         </div>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { lighten } from "polished";
+import avatar from "../../assets/icon-depoimento-white.png";
 
 export const Container = styled.main`
   grid-area: navbar;
@@ -21,30 +22,36 @@ export const Container = styled.main`
     align-items: center;
     gap: 0.6rem;
 
+    
     .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
       min-width: 1rem;
       padding: 6px 3px;
-
+      
       &:hover {
         background-color: ${lighten (0.03, '#1a8e5f')};
       }
     }
-
+    
     h3 {
       padding: 0;
       margin: 0;
     }
-
+    
     p {
       font-weight: bold;
     }
-
-    img {
-      width: 36px;
-      height: 36px;
+    
+    .loginAvatarArea {
+      background-image: url(${avatar});
+      background-size: 124%;
+      background-color: #000000;
+      background-position: center;
       border-radius: 50%;
-      border: 0;
+      width: 32px;
+      height: 32px;
+      margin-right: 0.4rem;        
     }
+    
 
     button {
       border-radius: 0.5rem;
