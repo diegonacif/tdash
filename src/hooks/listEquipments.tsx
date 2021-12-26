@@ -20,10 +20,8 @@ interface Equipment {
 
 }
 
-
 interface EquipmentsProviderProps {
     children: ReactNode
-
 }
 
 type EquipmentInput = Omit<Equipment, "count_final" | "id">
@@ -86,7 +84,7 @@ export function EquipmentProvider({ children }: EquipmentsProviderProps) {
 
         }
 
-    }
+    }   
 
 
     return (
