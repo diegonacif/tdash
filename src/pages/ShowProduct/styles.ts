@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { lighten } from "polished";
 
 export const Container = styled.div`
   display: grid;
@@ -23,27 +24,61 @@ export const Content = styled.div`
   margin: 0 1rem 0 0;
   padding: 1rem 2rem;
   background-color: var(--shape);
-  border-radius: 4px; 
+  border-radius: 4px;
+  
+  .showInnerContent {
+    display: grid;
+    justify-content: end;
+    padding: 0 4rem;
+  
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(7, 3.7rem);
+    grid-auto-flow: row;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
 
-  display: grid;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: var(--background);
+      border-radius: 4px;
+      padding-left: 1.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 2px 2px 2px #dedede;
+    }
+  }
 
-  grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(7, 3rem);
-  grid-auto-flow: row;
-  grid-row-gap: 1rem;
 
   h1 {
-    grid-column-start: span 4;
-    grid-row-start: span 2;
-    align-self: center;
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
+    justify-content: center;
   }
 
-  a {
+
+  .rollBackButton {
     position: absolute;
-    top: 15px;
-    left: 15px;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 16px;
+    left: 16px;
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: ${lighten (0.6, '#00750c')};
+    border-radius: 50%;
 
+    a {
+      position: absolute;      
+      color: var(--text-title);
+      text-decoration: none;
+      top: 2px;
+      left: 2px;
+    }
+  }
 
 `;
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AiOutlineLeft } from 'react-icons/ai';
+import { TiArrowBack } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar';
 import { Sidebar } from '../../components/Sidebar';
@@ -49,67 +49,72 @@ export const ShowProduct = (props: any) => {
       <Summary />
       <Content>
 
-        <Link to="/dashboard"> <AiOutlineLeft /> </Link>
-
-        <h1>Detalhe do Equipamento</h1>
-
-        <div className="showModel">
-          <h3>Modelo</h3>
-          <span>{equipment?.description}</span>
-        </div>
-        <div className="showCategory">
-          <h3>Categoria</h3>
-          <span>{equipment?.category.name}</span>
-        </div>
-        <div className="showStatus">
-          <h3>Status</h3>
-          <span >{equipment?.status}</span>
-        </div>
-        <div className="showClient">
-          <h3>Cliente</h3>
-          <span>{equipment?.customer.name}</span>
+        <div className="rollBackButton">
+          <Link to="/dashboard" style={{ textDecoration: 'none' }}> <TiArrowBack size={22} /> </Link>          
         </div>
 
-        <div className="showPatrimony">
-          <h3>Patrimônio</h3>
-          <span>{equipment?.patrimony}</span>
-        </div>
+        <h1>Detalhes do Equipamento</h1>
 
-        <div className="showSerialNumber">
-          <h3>Nº série</h3>
-          <span>{equipment?.supply}</span>
-        </div>
+        <div className="showInnerContent">
+          <div className="showModel">
+            <h3>Modelo</h3>
+            <span>{equipment?.description}</span>
+          </div>
 
+          <div className="showCategory">
+            <h3>Categoria</h3>
+            <span>{equipment?.category.name}</span>
+          </div>
 
-        <div className="showInitialCounter">
-          <h3>Contador Inicial</h3>
-          <span>{equipment?.count_initial}</span>
-        </div>
+          <div className="showStatus">
+            <h3>Status</h3>
+            <span >{equipment?.status}</span>
+          </div>
 
-        <div className="showFinalCounter">
-          <h3>Contador Final</h3>
-          <span>{equipment?.count_final}</span>
-        </div>
+          <div className="showClient">
+            <h3>Cliente</h3>
+            <span>{equipment?.customer.name}</span>
+          </div>
 
-        <div className="showTransformerPatrimony">
-          <h3>Patri. do transformador</h3>
-          <span>{equipment?.transformer}</span>
-        </div>
+          <div className="showPatrimony">
+            <h3>Patrimônio</h3>
+            <span>{equipment?.patrimony}</span>
+          </div>
 
-        <div className="showCreatedAt">
-          <h3>Data do Cadastro</h3>
-          <span>{equipment?.created_at}</span>
-        </div>
+          <div className="showSerialNumber">
+            <h3>Nº série</h3>
+            <span>{equipment?.supply}</span>
+          </div>
 
+          <div className="showInitialCounter">
+            <h3>Contador Inicial</h3>
+            <span>{equipment?.count_initial}</span>
+          </div>
 
-        <div className="showUpdatedAt">
-          <h3>Data última Atualização</h3>
-          <span>{equipment?.updated_at}</span>
-        </div>
+          <div className="showFinalCounter">
+            <h3>Contador Final</h3>
+            <span>{equipment?.count_final}</span>
+          </div>
 
-        <div className="showObs">
-          <h3>Observação</h3>
-          <span>{equipment?.obs}</span>
+          <div className="showTransformerPatrimony">
+            <h3>Patri. do transformador</h3>
+            <span>{equipment?.transformer}</span>
+          </div>
+
+          <div className="showCreatedAt">
+            <h3>Data do Cadastro</h3>
+            <span>{equipment?.created_at}</span>
+          </div>
+
+          <div className="showUpdatedAt">
+            <h3>Data última Atualização</h3>
+            <span>{equipment?.updated_at}</span>
+          </div>
+
+          <div className="showObs">
+            <h3>Observação</h3>
+            <span>{equipment?.obs}</span>
+          </div>
         </div>
 
 
