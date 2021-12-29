@@ -10,6 +10,10 @@ export const Container = styled.div`
   grid-area: mainTable;
   border-radius: 4px;
 
+  a {
+    text-decoration: none;
+  }
+
   .vertical-line {
     width: 1px;
     background-color: var(--shape);
@@ -55,8 +59,8 @@ export const Container = styled.div`
           border-radius: 4px;
           outline: none;
           background-color: var(--green);
-          
 
+          
           svg {
             margin-top: 3px;
             margin-left: 0.3rem;
@@ -193,17 +197,16 @@ export const Container = styled.div`
           flex-direction: row;
           flex-wrap: nowrap;
           justify-content: center;
-
-
-          button {
-            
+          
+          
+          button {            
             border: none;
             width: 28px;
             height: 28px;
             justify-content: center;
             align-items: center;
             border-radius: 3px;
-            outline: none;          
+            outline: none;
 
             svg {
               position: relative;
@@ -219,6 +222,8 @@ export const Container = styled.div`
             svg {
               position: relative;
               top: 3px;
+              color: inherit;
+              text-decoration: none;
             }
 
             &:hover {
@@ -235,6 +240,8 @@ export const Container = styled.div`
               position: relative;
               top: 2px;
               left: 2px;
+              color: inherit;
+              text-decoration: none;
             }
 
             &:hover {
@@ -246,15 +253,19 @@ export const Container = styled.div`
             background-color: ${lighten (0.56, '#1a8e5f')};
             color: var(--green);
             margin-right: 5px;
-
+            text-decoration: none;
+            
             svg {
               position: relative;
               top: 3px;
               left: 0;
+              color: var(--green);
+              text-decoration: none;
             }
 
             &:hover {
               border: 1px solid ${lighten (0.3, '#1a8e5f')};
+              text-decoration: none;
             }
           }
         }             
