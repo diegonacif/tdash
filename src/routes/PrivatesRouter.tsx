@@ -12,10 +12,11 @@ const PrivateRoutes: React.FC<RoutesPropsData> = ({ role, ...rest }) => {
     //fazer requisição para o back-end para verificar se existe as roles
     useEffect(() => {
         async function loadRoles() {
-          const response = await api.get("users/listRoles");
+          const response = await api.get("/users/listRoles");
           const findRole = response.data.some((r: string) =>
             role?.split(",").includes(r)
           );
+          console.log(response)
           setPermissions(findRole);//via receber todas as roles 
         }
     
@@ -35,9 +36,8 @@ const PrivateRoutes: React.FC<RoutesPropsData> = ({ role, ...rest }) => {
     }
 
 
-  return (
-    permissions ? <Route {...rest} /> : <Redirect to="/"/>
-    )
+  return  permissions ? <Route {...rest} /> : <Redirect to="/"/>
+    
 };
 
 export {PrivateRoutes};

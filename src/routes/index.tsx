@@ -16,8 +16,8 @@ const Routes = () => {
             <Route path="/" exact component={Login} />
             <PrivateRoutes path="/dashboard" component={Dashboard} />
             <PrivateRoutes path="/equipamento/:id" component={ShowProduct} />
-            <PrivateRoutes path="/novo-equipamento" component={CreateProduct} role="ROLE_ROOT, ROLE-ADMIN" />
-            <PrivateRoutes path="/novo-usuario" component={CreateUser} role="ROLE_ROOT"/>
+            <PrivateRoutes path="/novo-equipamento" component={CreateProduct}/>
+            <PrivateRoutes path="/novo-usuario"  component={CreateUser}/>
         </Switch>
     )
 }

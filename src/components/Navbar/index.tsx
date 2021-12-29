@@ -6,6 +6,8 @@ import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { Link } from 'react-router-dom';
+import PermissionComponent from '../PermissionComponent';
 
 
 export function Navbar() {
@@ -23,25 +25,25 @@ export function Navbar() {
     <Container>
       <h3>TDash Project</h3>
 
-      <div className="loginArea">            
+      <div className="loginArea">
         <div className="loginAvatarArea">
           {/* <img
             src={avatar}
             alt="avatar"
           /> */}
         </div>
-        
+
         <p>{user.name} </p>
 
 
         <div className="loginAreaButton">
           <Button
-          id="basic-button"
-          aria-controls="basic-menu"
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-          >          
+            id="basic-button"
+            aria-controls="basic-menu"
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+          >
             <MoreVertOutlinedIcon sx={{ color: "#ffffff" }} />
           </Button>
           <Menu
@@ -53,7 +55,9 @@ export function Navbar() {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={handleClose}>Perfil</MenuItem>
+            <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+              <Link to="/novo-usuario">  <MenuItem onClick={handleClose}>Perfil</MenuItem></Link>
+            </PermissionComponent>
             <MenuItem onClick={handleClose}>Gerenciar Usuários</MenuItem>
             <MenuItem onClick={signOut}>Logout</MenuItem>
           </Menu>
