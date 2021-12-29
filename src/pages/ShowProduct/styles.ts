@@ -17,15 +17,33 @@ export const Container = styled.div`
 
 `;
 export const Content = styled.div`
- max-width: 100%;
+  position: relative;
+  max-width: 100%;
   min-width: 700px;
   margin: 0 1rem 0 0;
   padding: 1rem 2rem;
   background-color: var(--shape);
-  border-radius: 4px;
+  border-radius: 4px; 
 
-  
+  display: grid;
 
-  
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(7, 3rem);
+  grid-auto-flow: row;
+  grid-row-gap: 1rem;
+
+  h1 {
+    grid-column-start: span 4;
+    grid-row-start: span 2;
+    align-self: center;
+  }
+
+  a {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+
+
 `;
 

@@ -53,62 +53,62 @@ export const ShowProduct = (props: any) => {
 
         <h1>Detalhe do Equipamento</h1>
 
-        <div>
-          <h3> Modelo </h3>
+        <div className="showModel">
+          <h3>Modelo</h3>
           <span>{equipment?.description}</span>
         </div>
-        <div>
-          <h3> Categoria </h3>
+        <div className="showCategory">
+          <h3>Categoria</h3>
           <span>{equipment?.category.name}</span>
         </div>
-        <div>
-          <h3> Cliente </h3>
+        <div className="showStatus">
+          <h3>Status</h3>
+          <span >{equipment?.status}</span>
+        </div>
+        <div className="showClient">
+          <h3>Cliente</h3>
           <span>{equipment?.customer.name}</span>
         </div>
 
-        <div>
-          <h3> Patrimônio </h3>
+        <div className="showPatrimony">
+          <h3>Patrimônio</h3>
           <span>{equipment?.patrimony}</span>
         </div>
 
-        <div>
-          <h3> Nº série </h3>
+        <div className="showSerialNumber">
+          <h3>Nº série</h3>
           <span>{equipment?.supply}</span>
         </div>
 
-        <div>
-          <h3> Status </h3>
-          <span >{equipment?.status}</span>
-        </div>
 
-        <div>
-          <h3> Contador Inicial </h3>
+        <div className="showInitialCounter">
+          <h3>Contador Inicial</h3>
           <span>{equipment?.count_initial}</span>
         </div>
 
-        <div>
-          <h3> Contador Final </h3>
+        <div className="showFinalCounter">
+          <h3>Contador Final</h3>
           <span>{equipment?.count_final}</span>
         </div>
 
-        <div>
-          <h3> Patri. do transformador  </h3>
+        <div className="showTransformerPatrimony">
+          <h3>Patri. do transformador</h3>
           <span>{equipment?.transformer}</span>
         </div>
 
-        <div>
-          <h3> Data do Cadastro</h3>
+        <div className="showCreatedAt">
+          <h3>Data do Cadastro</h3>
           <span>{equipment?.created_at}</span>
         </div>
 
 
-        <div>
-          <h3> Data última Atualização</h3>
+        <div className="showUpdatedAt">
+          <h3>Data última Atualização</h3>
           <span>{equipment?.updated_at}</span>
         </div>
 
-        <div>
-          <h3> Observação</h3>
+        <div className="showObs">
+          <h3>Observação</h3>
           <span>{equipment?.obs}</span>
         </div>
 

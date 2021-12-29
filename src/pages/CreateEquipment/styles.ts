@@ -17,35 +17,25 @@ export const Container = styled.div`
 
 `;
 export const Content = styled.div`
- max-width: 100%;
+  max-width: 100%;
   min-width: 700px;
   margin: 0 1rem 0 0;
   padding: 1rem 2rem;
   background-color: var(--shape);
   border-radius: 4px;
-
-  
 `;
 
-export const Form = styled.form`
-  .row1 {
+export const Form = styled.div`
+  .modelRow {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
 
-      .modelo {
-        width: 70%;
-        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
-          width: 100%;
-        }
+    .modelo {
+      width: 70%;
+      .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+        width: 100%;
       }
-    
-      .fabricante {        
-        width: 30%;
-        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
-          width: 100%;
-        }
-      }
+    }
   }
 
   .row2 {
@@ -53,28 +43,28 @@ export const Form = styled.form`
     flex-direction: row;
     gap: 1rem;
 
-      .tombo {
-        width: 50%;
-        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
-          width: 100%;
-        }
+    .tombo {
+      width: 50%;
+      .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+        width: 100%;
       }
-    
-      .suprimento {        
-        width: 50%;
-        .css-4mzek5-MuiFormControl-root-MuiTextField-root {
-          width: 100%;
-        }
+    }
+
+    .suprimento {
+      width: 50%;
+      .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+        width: 100%;
       }
+    }
   }
 
   h2 {
     color: var(--text-title);
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;    
+    margin-bottom: 1.5rem;
   }
 
-  /* input {
+  input {
     width: 100%;
     padding: 0 1.5rem;
     height: 4rem;
@@ -93,7 +83,7 @@ export const Form = styled.form`
     & + input {
       margin-top: 1rem;
     }
-  } */
+  }
 
   .buttonContainer {
     display: flex;

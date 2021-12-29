@@ -5,10 +5,10 @@ import { Sidebar } from '../../components/Sidebar';
 import { Summary } from "../../components/Summary";
 import { useEquipments } from '../../hooks/listEquipments';
 import { api } from '../../services/api';
-import { Container, Content, Form } from "./styles";
 import { AiOutlineLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 
+import { Container, Content, Form } from './styles';
 
 
 interface Category {
@@ -101,14 +101,13 @@ export const CreateProduct = () => {
       <Summary />
       <Content>
 
-
         <Link to="/dashboard"> <AiOutlineLeft /> </Link>
 
         <Form onSubmit={handleCreateNewEquipment} >
 
           <h2>Cadastrar equipamento</h2>
 
-          <div className="row1">
+          <div className="modelRow">
             <div className="modelo">
               <TextField
                 required
@@ -121,12 +120,9 @@ export const CreateProduct = () => {
                 onChange={event => setDescription(event.target.value)}
               />
             </div>
-
           </div>
 
-
           <div className="row2">
-
             <div className="tombo">
               <TextField
                 required
@@ -139,7 +135,6 @@ export const CreateProduct = () => {
                 color="success"
                 onChange={event => setPatrimony((event.target.value))}
               />
-
             </div>
 
 
@@ -154,14 +149,12 @@ export const CreateProduct = () => {
                 color="success"
                 onChange={event => setSupply(event.target.value)}
               />
-
             </div>
 
           </div>
 
 
           <div className="row2">
-
             <div className="transformado">
               <TextField
                 type="number"
@@ -173,7 +166,6 @@ export const CreateProduct = () => {
                 color="success"
                 onChange={event => setTransformer((event.target.value))}
               />
-
             </div>
 
             <div className="serie">
@@ -187,16 +179,10 @@ export const CreateProduct = () => {
                 color="success"
                 onChange={event => setSerial(event.target.value)}
               />
-
             </div>
-
           </div>
 
-          <div />
-
-
           <div className="categoria">
-
             <select onChange={event => setCategory_id(event.target.value)} value={category_id} required>
               <option value="">Categoria</option>
               {categories.map((category) => (
@@ -225,7 +211,6 @@ export const CreateProduct = () => {
                 color="success"
                 onChange={event => setCount_initial((event.target.value))}
               />
-
             </div>
 
 
