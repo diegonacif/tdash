@@ -47,6 +47,11 @@ export const Content = styled.div`
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       box-shadow: 2px 2px 2px #dedede;
+
+      &:hover {
+        background-color: var(--green2);
+        transition-duration: 0.3s;
+      }
     }
   }
 
