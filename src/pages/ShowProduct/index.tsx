@@ -82,7 +82,7 @@ export const ShowProduct = (props: any) => {
           </div>
 
           <div className="showSerialNumber">
-            <h3>Nº série</h3>
+            <h3>Nº Série</h3>
             <span>{equipment?.supply}</span>
           </div>
 
@@ -97,7 +97,7 @@ export const ShowProduct = (props: any) => {
           </div>
 
           <div className="showTransformerPatrimony">
-            <h3>Patri. do transformador</h3>
+            <h3>Patrimônio (transformador)</h3>
             <span>{equipment?.transformer}</span>
           </div>
 
@@ -107,7 +107,7 @@ export const ShowProduct = (props: any) => {
           </div>
 
           <div className="showUpdatedAt">
-            <h3>Data última Atualização</h3>
+            <h3>Data da Última Atualização</h3>
             <span>{equipment?.updated_at}</span>
           </div>
 
