@@ -145,9 +145,7 @@ export const CreateProduct = () => {
               color="success"
               onChange={event => setSupply(event.target.value)}
             />
-          </div>
-
-          
+          </div>          
 
           <div className="serie">
             <TextField
@@ -160,9 +158,7 @@ export const CreateProduct = () => {
               color="success"
               onChange={event => setSerial(event.target.value)}
             />
-          </div>
-
-          
+          </div>          
 
           <div className="contador-inicial">
             <TextField
@@ -187,19 +183,7 @@ export const CreateProduct = () => {
               color="success"
               onChange={event => setTransformer((event.target.value))}
             />
-          </div>
-
-          <div className="obs">
-            <TextField
-              value={obs}
-              id="outlined-size-small"
-              placeholder="Observação"
-              label="Observação" size="small"
-              margin="dense"
-              color="success"
-              onChange={event => setObs(event.target.value)}
-            />
-          </div>
+          </div>          
 
           <div className="status">
             <select onChange={event => setStatus(event.target.value)} required>
@@ -229,6 +213,18 @@ export const CreateProduct = () => {
                 <option key={category.name} value={category.id} >{category.name}</option>
               ))}
             </select>
+          </div>
+
+          <div className="obs">
+            <TextField
+              value={obs}
+              id="outlined-size-small"
+              placeholder="Observação"
+              label="Observação" size="small"
+              margin="dense"
+              color="success"
+              onChange={event => setObs(event.target.value)}
+            />
           </div>
 
           <div className="buttonContainer">

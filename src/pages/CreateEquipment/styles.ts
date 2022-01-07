@@ -54,7 +54,7 @@ export const Form = styled.div`
   /* divs */  
   .modelo {
     width: 100%;
-    grid-column-start: span 2;
+    grid-column-start: span 3;
     .css-4mzek5-MuiFormControl-root-MuiTextField-root {
       width: 100%;
     }
@@ -114,6 +114,51 @@ export const Form = styled.div`
       &:hover {
         filter: brightness(1.1);
       }
+    }
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+
+    select {
+      width: 100%;
+      height: 2.6rem;
+      padding-left: 0.6rem;
+      border-radius: 0.23rem;
+      background-color: var(--shape);
+      font-size: 1rem;
+      color: var(--text-title);
+    }
+  }
+
+  .cliente {
+    display: flex;
+    align-items: center;
+    
+    select {
+      width: 100%;
+      height: 2.6rem;
+      padding-left: 0.6rem;
+      border-radius: 0.23rem;
+      background-color: var(--shape);
+      font-size: 1rem;
+      color: var(--text-title);
+    }
+  }
+
+  .categoria {
+    display: flex;
+    align-items: center;
+    
+    select {
+      width: 100%;
+      height: 2.6rem;
+      padding-left: 0.6rem;
+      border-radius: 0.23rem;
+      background-color: var(--shape);
+      font-size: 1rem;
+      color: var(--text-title);
     }
   }
   /* divs end */
