@@ -37,7 +37,7 @@ export const Content = styled.div`
 `;
 
 
-export const Form = styled.div`
+export const Form = styled.form`
   display: grid;
   justify-content: center;
   padding: 1rem 6rem;
