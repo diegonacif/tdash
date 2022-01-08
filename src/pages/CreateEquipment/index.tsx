@@ -227,11 +227,11 @@ export const CreateProduct = () => {
             />
           </div>
 
-          <div className="buttonContainer">
+          {/* <div className="buttonContainer"> */}
             <button type="submit">
               Cadastrar
             </button>
-          </div>
+          {/* </div> */}
 
 
 

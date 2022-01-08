@@ -120,45 +120,51 @@ export const Form = styled.div`
   .status {
     display: flex;
     align-items: center;
+    padding-bottom: 0.1rem;
 
     select {
       width: 100%;
       height: 2.6rem;
       padding-left: 0.6rem;
-      border-radius: 0.23rem;
+      border-radius: 0.25rem;
       background-color: var(--shape);
       font-size: 1rem;
       color: var(--text-title);
+      border: 1px solid #969696;
     }
   }
 
   .cliente {
     display: flex;
     align-items: center;
+    padding-bottom: 0.1rem;
     
     select {
       width: 100%;
       height: 2.6rem;
       padding-left: 0.6rem;
-      border-radius: 0.23rem;
+      border-radius: 0.25rem;
       background-color: var(--shape);
       font-size: 1rem;
       color: var(--text-title);
+      border: 1px solid #969696;
     }
   }
 
   .categoria {
     display: flex;
     align-items: center;
+    padding-bottom: 0.1rem;
     
     select {
       width: 100%;
       height: 2.6rem;
       padding-left: 0.6rem;
-      border-radius: 0.23rem;
+      border-radius: 0.25rem;
       background-color: var(--shape);
       font-size: 1rem;
       color: var(--text-title);
+      border: 1px solid #969696;
     }
   }
   /* divs end */
