@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { lighten } from "polished";
 
 export const Container = styled.div`
   display: grid;
@@ -22,7 +23,7 @@ export const Content = styled.div`
   max-width: 100%;
   min-width: 700px;
   margin: 0 1rem 0 0;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   background-color: var(--shape);
   border-radius: 4px;
 
@@ -34,22 +35,57 @@ export const Content = styled.div`
     align-items: center;
     background-color: var(--background);
   }
+
+  .rollBackButton {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 1rem;
+    left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: ${lighten (0.6, '#00750c')};
+    border-radius: 50%;
+
+    a {
+      position: absolute;      
+      color: var(--text-title);
+      text-decoration: none;
+      top: 4px;
+      left: 4px;
+    }
+  }
 `;
 
 
 export const Form = styled.form`
   display: grid;
   justify-content: center;
-  padding: 1rem 6rem;
-  height: 89%;
+  position: relative;
+  height: 100%;
+
+  padding: 5.5rem 6rem 2rem 6rem;
 
   grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(7, 3.7rem);
+  grid-template-rows: repeat(4, 3.7rem);
   grid-auto-flow: row;
   grid-row-gap: 0;
   grid-column-gap: 1rem;
 
   background-color: var(--background);
+
+  h1 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+  }
 
   /* divs */  
   .modelo {
@@ -68,6 +104,20 @@ export const Form = styled.form`
   }
 
   .suprimento {
+    width: 100%;
+    .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+      width: 100%;
+    }
+  }
+
+  .transformado {
+    width: 100%;
+    .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+      width: 100%;
+    }
+  }
+
+  .contador-inicial {
     width: 100%;
     .css-4mzek5-MuiFormControl-root-MuiTextField-root {
       width: 100%;
@@ -98,7 +148,7 @@ export const Form = styled.form`
     button[type="submit"] {
       width: 12rem;
       padding: 0 1.5rem;
-      height: 4rem;
+      height: 3rem;
       background: var(--green);
       color: #fff;
       border-radius: 0.25rem;

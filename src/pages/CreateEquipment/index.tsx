@@ -7,6 +7,7 @@ import { useEquipments } from '../../hooks/listEquipments';
 import { api } from '../../services/api';
 import { AiOutlineLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
+import { TiArrowBack } from 'react-icons/ti';
 
 import { Container, Content, Form } from './styles';
 
@@ -101,11 +102,15 @@ export const CreateProduct = () => {
       <Summary />
       <Content>
 
-        <Link to="/dashboard"> <AiOutlineLeft /> </Link>
 
-        <h1>Cadastrar equipamento</h1>
 
         <Form onSubmit={handleCreateNewEquipment} >
+          
+          <div className="rollBackButton">
+            <Link to="/dashboard" style={{ textDecoration: 'none' }}> <TiArrowBack size={22} /> </Link>          
+          </div>
+        
+          <h1>Cadastrar equipamento</h1>
 
           <div className="modelo">
             <TextField
@@ -227,11 +232,11 @@ export const CreateProduct = () => {
             />
           </div>
 
-          {/* <div className="buttonContainer"> */}
+          <div className="buttonContainer">
             <button type="submit">
               Cadastrar
             </button>
-          {/* </div> */}
+          </div>
 
 
 
