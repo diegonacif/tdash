@@ -4,9 +4,9 @@ import { FiPackage } from 'react-icons/fi';
 import { RiStore3Line } from 'react-icons/ri';
 import { GrVmMaintenance } from 'react-icons/gr';
 import { MdOutlineSummarize } from 'react-icons/md';
-import { useEquipments } from "../../hooks/listEquipments";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { Link } from "react-router-dom";
 
 interface Customer {
   id: string;
@@ -126,7 +126,7 @@ export function Summary() {
           <BsPerson />
         </div>
         <h2>{customers.length}</h2>
-        <span>Clientes</span>
+       <Link to="/clientes"> <span>Clientes</span></Link>
       </Card>
     </Container>
   )

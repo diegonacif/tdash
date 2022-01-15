@@ -21,7 +21,7 @@ interface Customer {
 }
 
 
-export const CreateProduct = () => {
+export const CreateEquipment = () => {
 
 
   const { createEquipment } = useEquipments()
@@ -71,6 +71,7 @@ export const CreateProduct = () => {
     event.preventDefault()
 
     await createEquipment({
+      
       description,
       category_id,
       customer_id,

@@ -16,7 +16,7 @@ const PrivateRoutes: React.FC<RoutesPropsData> = ({ role, ...rest }) => {
           const findRole = response.data.some((r: string) =>
             role?.split(",").includes(r)
           );
-          console.log(response)
+        
           setPermissions(findRole);//via receber todas as roles 
         }
     
