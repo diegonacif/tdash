@@ -23,7 +23,7 @@ interface FortEdresses{
   complement:string;
   reference:string;
   city: string;
-  state:string
+  state:string 
 }
 
 export const ShowCustomer = (props: any) => {
@@ -51,7 +51,6 @@ export const ShowCustomer = (props: any) => {
         <Link to="/dashboard"> <AiOutlineLeft /> </Link>
 
         <h1>Detalhes do Cliente</h1>   
-
 
            <div>
           <h2> Dados do cliente </h2>
