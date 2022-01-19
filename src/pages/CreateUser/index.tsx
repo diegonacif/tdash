@@ -11,10 +11,17 @@ import { useHistory } from 'react-router-dom'
 import swal from "sweetalert";
 
 
-
+interface ProfileUser {
+  id?: string;
+  name: string;
+  email: string;
+  roles: Array<Roles>
+  created_at: Date
+}
 interface Roles {
   id: string;
   name: string;
+  description: string
 }
 interface User {
   id?: string;
@@ -30,6 +37,7 @@ export const CreateUser = () => {
 
   const [data, setData] = useState<Roles[]>([])
   const [users, setUsers] = useState<User[]>([])
+  const [listUsers, setlistProfile] = useState<ProfileUser[]>([])
 
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
@@ -38,41 +46,59 @@ export const CreateUser = () => {
 
 
   async function createUser(userInput: User) {
-   try {
-    const response = await api.post('users', {
-      ...userInput,
-    })
+    try {
+      const response = await api.post('users', {
+        ...userInput,
+      })
 
-    const user = response.data
-    setUsers([
-      ...users,
-      user
+      const user = response.data
+      setUsers([
+        ...users,
+        user
 
-    ]);
-    swal({
-      title: "Feito",
-      text: "Usúario cadastrado com sucesso!",
-      icon: "success",
-  });
+      ]);
+      swal({
+        title: "Feito",
+        text: "Usúario cadastrado com sucesso!",
+        icon: "success",
+      });
 
-    history.push("dashboard")
-     
-   } catch (error) {
-    swal({
-      icon: "error",
-      title: "Oops",
-      text: "Algo deu errado, tente novamente mais tarde!",
-  });
+      history.push("/gerenciar-usuarios")
 
-     
-   }
+
+//atualizar a listagem apos o cadastro
+      api.get("users")
+        .then(response => {
+          setlistProfile(response.data)
+        }).catch(error => console.log(error));
+
+
+
+    } catch (error) {
+      swal({
+        icon: "error",
+        title: "Oops",
+        text: "Algo deu errado, tente novamente mais tarde!",
+      });
+
+
+    }
 
   }
   //buscar todas as roles de usuario
   useEffect(() => {
     api.get("users/roles")
-      .then(response => {     
+      .then(response => {
         setData(response.data)
+      }).catch(error => console.log(error));
+
+  }, [])
+
+  //buscar perfil do usuario
+  useEffect(() => {
+    api.get("users")
+      .then(response => {
+        setlistProfile(response.data)
       }).catch(error => console.log(error));
 
   }, [])
@@ -81,7 +107,7 @@ export const CreateUser = () => {
   async function handleCreateNewUser(event: FormEvent) {
     event.preventDefault()
 
-  createUser({
+    createUser({
       name,
       roles,
       email,
@@ -167,13 +193,45 @@ export const CreateUser = () => {
 
           </div>
 
-          <div />
+
 
 
 
           <button type="submit">
             Cadastrar
           </button>
+
+
+          <h2>Usúarios do Sistema</h2>
+
+          {listUsers.map(user => {
+            return (
+              <li>
+                <div>
+                  <h4> nome </h4>
+                  <span>{user?.name}</span>
+                </div>
+                <div>
+                  <h4> email </h4>
+                  <span>{user?.email}</span>
+                </div>
+                <div>
+                  <h4> permissão </h4>
+                  {user.roles.map(role => {
+                    return (
+                      <span>{role.name}</span>
+                    )
+                  })}
+                </div>
+                <div>
+                  <h4> data de crição </h4>
+                  <span>{user?.created_at}</span>
+                </div>
+              </li>
+            )
+          })}
+
+
 
 
         </Form>

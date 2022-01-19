@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import PermissionComponent from "../PermissionComponent";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import {useHistory} from 'react-router-dom'
 
 
 interface Equipment {
@@ -32,6 +33,8 @@ interface Equipment {
 
 export const MainTable = () => {
 
+  const history = useHistory()
+
   const [data, setData] = useState<Equipment[]>([])
   useEffect(() => {
     api.get("equipments")
@@ -55,6 +58,12 @@ export const MainTable = () => {
 
   }
 
+  //editar equipment
+
+  function editEquipment(id:string){
+    history.push(`editar-equipamento/${id}`)
+  }
+
   return (
 
     <Container>
@@ -70,7 +79,7 @@ export const MainTable = () => {
             <th>Suprimento</th>
             <th>Atualização</th>
             <th>
-              <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+              <PermissionComponent role="root,admin">
                 <Link to="/novo-equipamento">
                   <button>
                     <div className="addIcon"><RiAddFill size="18" /></div>
@@ -117,8 +126,8 @@ export const MainTable = () => {
                     <button className="show" >
                       <Link to={`/equipamento/${equipment.id}`}> <AiOutlineUnorderedList size={23} /></Link>
                     </button>
-                    <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
-                      <button className="edit">
+                    <PermissionComponent role="root,admin">
+                      <button className="edit" onClick={() => editEquipment(equipment.id)}>
                         <RiEditLine size={23} />
                       </button>
 

@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from "react";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import { FiPrinter } from "react-icons/fi";
 import { RiAddFill, RiEditLine } from "react-icons/ri";
 import { VscTrash } from "react-icons/vsc";
 import { Link } from "react-router-dom";

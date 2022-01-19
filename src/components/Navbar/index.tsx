@@ -55,10 +55,12 @@ export function Navbar() {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
-              <Link to="/novo-usuario">  <MenuItem onClick={handleClose}>Perfil</MenuItem></Link>
+            <Link to="/perfil-usuario">  <MenuItem onClick={handleClose}>Perfil</MenuItem></Link>
+
+
+            <PermissionComponent role="root,admin">
+              <Link to="/gerenciar-usuarios"><MenuItem onClick={handleClose}>Gerenciar Usuários</MenuItem></Link>
             </PermissionComponent>
-            <MenuItem onClick={handleClose}>Gerenciar Usuários</MenuItem>
             <MenuItem onClick={signOut}>Logout</MenuItem>
           </Menu>
         </div>

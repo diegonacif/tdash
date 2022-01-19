@@ -112,7 +112,6 @@ export const Form = styled.form`
       margin-top: 1.5rem;
       margin-left: auto;
       margin-right: auto;
-   
   
       transition: filter 0.2s;
       transition: font-size 0.1s;
