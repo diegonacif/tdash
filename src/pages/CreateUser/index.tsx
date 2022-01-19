@@ -5,14 +5,18 @@ import { Sidebar } from '../../components/Sidebar';
 import { Summary } from "../../components/Summary";
 import { api } from '../../services/api';
 import { Container, Content, Form } from "./styles";
-import { AiOutlineLeft } from 'react-icons/ai'
+import { AiOutlineLeft, AiOutlineUnorderedList } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
 import swal from "sweetalert";
+import {Table} from './styles'
+import PermissionComponent from '../../components/PermissionComponent';
+import { RiEditLine } from 'react-icons/ri';
+import { VscTrash } from 'react-icons/vsc';
 
 
 interface ProfileUser {
-  id?: string;
+  id: string;
   name: string;
   email: string;
   roles: Array<Roles>
@@ -66,7 +70,7 @@ export const CreateUser = () => {
       history.push("/gerenciar-usuarios")
 
 
-//atualizar a listagem apos o cadastro
+      //atualizar a listagem apos o cadastro
       api.get("users")
         .then(response => {
           setlistProfile(response.data)
@@ -85,6 +89,22 @@ export const CreateUser = () => {
     }
 
   }
+
+  // Deletar um usúario
+  async function deleteUser(id: string) {
+
+    if (window.confirm(`Deseja realmente excluir esse Usúario?`)) {
+      await api.delete(`users/delete/${id}`)
+      await api.get("users")
+        .then(response => {
+          setlistProfile(response.data)
+
+        })
+    }
+
+  }
+
+
   //buscar todas as roles de usuario
   useEffect(() => {
     api.get("users/roles")
@@ -202,34 +222,68 @@ export const CreateUser = () => {
           </button>
 
 
-          <h2>Usúarios do Sistema</h2>
+          <h2>Usúarios do Sistema</h2>       
 
-          {listUsers.map(user => {
-            return (
-              <li>
-                <div>
-                  <h4> nome </h4>
-                  <span>{user?.name}</span>
-                </div>
-                <div>
-                  <h4> email </h4>
-                  <span>{user?.email}</span>
-                </div>
-                <div>
-                  <h4> permissão </h4>
-                  {user.roles.map(role => {
-                    return (
-                      <span>{role.name}</span>
-                    )
-                  })}
-                </div>
-                <div>
-                  <h4> data de crição </h4>
-                  <span>{user?.created_at}</span>
-                </div>
-              </li>
-            )
-          })}
+
+          <Table>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Permissão</th>
+                  <th>Criado em</th>
+                  <th>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {listUsers.map(user => {
+                  return (
+                    <tr key={user.id}>
+                      <td className="dark-td">{0}</td>
+
+                      <td className="dark-td">{user.name}</td>
+
+                      <td>{user.email} </td>
+
+                     {user.roles.map(role=>{
+
+                       return(
+                        <td key={user.id}>{role.name}</td>
+                       )
+                     })}
+
+                      <td> {new Intl.DateTimeFormat('pt-BR').format(
+                        new Date(user.created_at)
+                      )}</td>
+
+                      <td>
+                        <div className="actionButtons">
+                      
+                          <PermissionComponent role="root,admin">
+                            <button className="edit">
+                              <RiEditLine size={23} />
+                            </button>
+
+                            <button type="submit" className="delete" onClick={() => deleteUser(user.id)}>
+                              <VscTrash size={23} />
+                            </button>
+                          </PermissionComponent>
+
+                        </div>
+                      </td>
+
+                    </tr>
+
+                  )
+                })}
+
+              </tbody>
+            </table>
+
+          </Table>
 
 
 

@@ -67,7 +67,7 @@ export function Customers() {
               <th>Telefone</th>
               <th>Criado em</th>
               <th>
-                <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+                <PermissionComponent role="root, admin">
                   <Link to="/novo-equipamento">
                     <button>
                       <div className="addIcon"><RiAddFill size="18" /></div>
@@ -100,7 +100,7 @@ export function Customers() {
                       <button className="show" >
                         <Link to={`/cliente/${customer.id}`}> <AiOutlineUnorderedList size={23} /></Link>
                       </button>
-                      <PermissionComponent role="ROLE_ROOT,ROLE_ADMIN">
+                      <PermissionComponent role="root, admin">
                         <button className="edit">
                           <RiEditLine size={23} />
                         </button>
