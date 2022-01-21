@@ -8,6 +8,7 @@ import { api } from '../../services/api';
 import { Container, Content, Form } from "./styles";
 import { AiOutlineLeft } from 'react-icons/ai'
 import { Link, useParams } from 'react-router-dom';
+import { TiArrowBack } from 'react-icons/ti';
 
 
 interface EquipmentId {
@@ -137,111 +138,107 @@ export const EditEquipment = () => {
       <Content>
 
 
-        <Link to="/dashboard"> <AiOutlineLeft /> </Link>
 
         <Form onSubmit={handleCreateNewEquipment} >
+          
+          <div className="rollBackButton">
+            <Link to="/dashboard" style={{ textDecoration: 'none' }}> <TiArrowBack size={22} /> </Link>          
+          </div>
+        
+          <h1>Editar equipamento</h1>
 
-          <h2>Cadastrar equipamento</h2>
-
-          <div className="row1">
-            <div className="modelo">
-              <TextField
-                required
-                value={equipment.description}
-                id="outlined-size-small"
-                placeholder="Description"
-                label="Modelo" size="small"
-                margin="dense"
-                color="success"
-                onChange={event => setDescription(event.target.value)}
-              />
-            </div>
-
+          <div className="modelo">
+            <TextField
+              required
+              value={description}
+              id="outlined-size-small"
+              placeholder="Description"
+              label="Modelo" size="small"
+              margin="dense"
+              color="success"
+              onChange={event => setDescription(event.target.value)}
+            />
           </div>
 
-
-          <div className="row2">
-
-            <div className="tombo">
-              <TextField
-                required
-                type="number"
-                value={equipment.patrimony}
-                id="outlined-size-small"
-                placeholder="Patrimônio"
-                label="Patrimônio" size="small"
-                margin="dense"
-                color="success"
-                onChange={event => setPatrimony((event.target.value))}
-              />
-
-            </div>
-
-
-            <div className="suprimento">
-              <TextField
-                required
-                value={equipment.supply}
-                id="outlined-size-small"
-                placeholder="Suprimento"
-                label="Suprimento" size="small"
-                margin="dense"
-                color="success"
-                onChange={event => setSupply(event.target.value)}
-              />
-
-            </div>
-
+          <div className="tombo">
+            <TextField
+              required
+              type="number"
+              value={patrimony}
+              id="outlined-size-small"
+              placeholder="Patrimônio"
+              label="Patrimônio" size="small"
+              margin="dense"
+              color="success"
+              onChange={event => setPatrimony((event.target.value))}
+            />
           </div>
 
+          <div className="suprimento">
+            <TextField
+              required
+              value={supply}
+              id="outlined-size-small"
+              placeholder="Suprimento"
+              label="Suprimento" size="small"
+              margin="dense"
+              color="success"
+              onChange={event => setSupply(event.target.value)}
+            />
+          </div>          
 
-          <div className="row2">
+          <div className="serie">
+            <TextField
+              required
+              value={serial}
+              id="outlined-size-small"
+              placeholder="N-Serie"
+              label="N-Serie" size="small"
+              margin="dense"
+              color="success"
+              onChange={event => setSerial(event.target.value)}
+            />
+          </div>          
 
-            <div className="transformado">
-              <TextField
-                type="number"
-                value={equipment.transformer}
-                id="outlined-size-small"
-                placeholder="Transformador"
-                label="Transformador" size="small"
-                margin="dense"
-                color="success"
-                onChange={event => setTransformer((event.target.value))}
-              />
-
-            </div>
-
-            <div className="serie">
-              <TextField
-                required
-                value={equipment.serial}
-                id="outlined-size-small"
-                placeholder="N-Serie"
-                label="N-Serie" size="small"
-                margin="dense"
-                color="success"
-                onChange={event => setSerial(event.target.value)}
-              />
-
-            </div>
-
+          <div className="contador-inicial">
+            <TextField
+              value={count_initial}
+              id="outlined-size-small"
+              placeholder="Contador Inicial"
+              label="Contador Inicial" size="small"
+              margin="dense"
+              color="success"
+              onChange={event => setCount_initial((event.target.value))}
+            />
           </div>
 
-          <div />
+          <div className="transformado">
+            <TextField
+              type="number"
+              value={transformer}
+              id="outlined-size-small"
+              placeholder="Transformador"
+              label="Transformador" size="small"
+              margin="dense"
+              color="success"
+              onChange={event => setTransformer((event.target.value))}
+            />
+          </div>          
 
+          <div className="status">
+            <select onChange={event => setStatus(event.target.value)} required>
+              <option value="">Status</option>
+              <option value={selectStatus.status = "estoque"}>estoque</option>
+              <option value={selectStatus.status = "cliente"}>cliente</option>
+              <option value={selectStatus.status = "manutenção"}>manutenção</option>
+              <option value={selectStatus.status = "aguardando peças"}>aguardando peças</option>
+              <option value={selectStatus.status = "sem conserto"}>sem conserto</option>
 
-          <div className="categoria">
-
-            <select onChange={event => setCategory_id(event.target.value)} value={equipment.category_id} required>
-              <option value="">Categoria</option>
-              {categories.map((category) => (
-                <option key={category.name} value={category.id} >{category.name}</option>
-              ))}
             </select>
           </div>
 
           <div className="cliente">
-            <select onChange={event => setCustomer_id(event.target.value)} value={equipment.customer_id} required>
+            <select onChange={event => setCustomer_id(event.target.value)} value={customer_id} required>
               <option value="">Cliente</option>
               {customers.map((customer) => (
                 <option key={customer.name} value={customer.id}>{customer.name}</option>
@@ -249,44 +246,18 @@ export const EditEquipment = () => {
             </select>
           </div>
 
-          <div className="row2">
-            <div className="contador-inicial">
-              <TextField
-                value={equipment.count_initial}
-                id="outlined-size-small"
-                placeholder="Contador Inicial"
-                label="Contador Inicial" size="small"
-                margin="dense"
-                color="success"
-                onChange={event => setCount_initial((event.target.value))}
-              />
-
-            </div>
-
-
-
-            <div className="status">
-
-              <div className="status">
-                <select value={equipment.status} onChange={event => setStatus(event.target.value)} required>
-                  <option >Status</option>
-                  <option value={selectStatus.status = "estoque"}>estoque</option>
-                  <option value={selectStatus.status = "cliente"}>cliente</option>
-                  <option value={selectStatus.status = "manutenção"}>manutenção</option>
-                  <option value={selectStatus.status = "aguardando peças"}>aguardando peças</option>
-                  <option value={selectStatus.status = "sem conserto"}>sem conserto</option>
-
-                </select>
-              </div>
-
-
-            </div>
+          <div className="categoria">
+            <select onChange={event => setCategory_id(event.target.value)} value={category_id} required>
+              <option value="">Categoria</option>
+              {categories.map((category) => (
+                <option key={category.name} value={category.id} >{category.name}</option>
+              ))}
+            </select>
           </div>
-
 
           <div className="obs">
             <TextField
-              value={equipment.obs}
+              value={obs}
               id="outlined-size-small"
               placeholder="Observação"
               label="Observação" size="small"
@@ -296,10 +267,12 @@ export const EditEquipment = () => {
             />
           </div>
 
+          <div className="buttonContainer">
+            <button type="submit">
+              Salvar
+            </button>
+          </div>
 
-          <button type="submit">
-            Cadastrar
-          </button>
 
 
         </Form>

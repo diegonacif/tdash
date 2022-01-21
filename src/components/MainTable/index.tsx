@@ -47,7 +47,7 @@ export const MainTable = () => {
   // Deletar um equipamento
   async function deleteEquipment(id: string) {
 
-    if (window.confirm("Deseja realmente excluir esse equipamneto?")) {
+    if (window.confirm("Deseja realmente excluir esse equipamento?")) {
       await api.delete(`equipments/${id}`)
       await api.get("equipments")
         .then(response => {
@@ -123,12 +123,16 @@ export const MainTable = () => {
 
                 <td>
                   <div className="actionButtons">
-                    <button className="show" >
-                      <Link to={`/equipamento/${equipment.id}`}> <AiOutlineUnorderedList size={23} /></Link>
+                    <button className="show">
+                      <Link to={`/equipamento/${equipment.id}`}>
+                        <AiOutlineUnorderedList size={23} />
+                      </Link>
                     </button>
                     <PermissionComponent role="root,admin">
-                      <button className="edit" onClick={() => editEquipment(equipment.id)}>
-                        <RiEditLine size={23} />
+                      <button className="edit">
+                        <Link to={`/editar-equipamento/${equipment.id}`}>
+                          <RiEditLine size={23} />
+                        </Link>                        
                       </button>
 
                       <button type="submit" className="delete" onClick={() => deleteEquipment(equipment.id)}>
