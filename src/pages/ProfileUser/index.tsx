@@ -22,13 +22,12 @@ interface Roles {
 export const ProfileUser = () => {
 
 
-  const [profile, setProfile] = useState<Profile| null>(null)
+  const [profile, setProfile] = useState<Profile | null>(null)
 
   //buscar perfil do usuario
   useEffect(() => {
     api.get("users/profile")
       .then(response => {
-        console.log(response)
         setProfile(response.data)
       }).catch(error => console.log(error));
 

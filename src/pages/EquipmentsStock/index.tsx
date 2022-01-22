@@ -2,7 +2,8 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import { RiAddFill, RiEditLine } from "react-icons/ri";
+import { FiPrinter } from "react-icons/fi";
+import { RiEditLine } from "react-icons/ri";
 import { VscTrash } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
@@ -14,17 +15,28 @@ import { Container, Table } from "./styles";
 
 
 
-interface Customer {
+interface Equipment {
   id: string;
-  name: string;
-  email: number;
-  phone: string;
-  created_at: Date
+  description: string;
+  patrimony: number;
+  serial: string;
+  count_initial?: number;
+  count_final?: number;
+  category: {
+    name: string
+  };
+  customer: {
+    name: string
+  };
+  status: string;
+  obs?: string
+  supply: string;
+  updated_at: Date
 }
 
 
 
-export function Customers() {
+export function EquipmentsStock() {
 
 
   //formatação de data
@@ -32,9 +44,9 @@ export function Customers() {
     return moment(updated_at).format("DD/MM/YYYY")
   }
 
-  const [data, setData] = useState<Customer[]>([])
+  const [data, setData] = useState<Equipment[]>([])
   useEffect(() => {
-    api.get("customers")
+    api.get("equipments/em_estoque")
       .then(response => {
         setData(response.data)
       }).catch(error => console.log(error));
@@ -42,11 +54,11 @@ export function Customers() {
   }, [])
 
   // Deletar um equipamento
-  async function deleteCustomer(id: string) {
+  async function deleteEquipment(id: string) {
 
-    if (window.confirm("Deseja realmente excluir esse cliente?")) {
-      await api.delete(`customers/deletar/${id}`)
-      await api.get("customers")
+    if (window.confirm("Deseja realmente excluir esse equipamneto?")) {
+      await api.delete(`equipments/${id}`)
+      await api.get("equipments")
         .then(response => {
           setData(response.data)
 
@@ -67,48 +79,53 @@ export function Customers() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Telefone</th>
-              <th>Criado em</th>
-              <th>
-                <PermissionComponent role="root, admin">
-                  <Link to="/novo-equipamento">
-                    <button>
-                      <div className="addIcon"><RiAddFill size="18" /></div>
-                      <div className="addText">Adicionar</div>
-                    </button>
-                  </Link>
+              <th>Modelo</th>
+              <th>Tombo</th>
+              <th>Série</th>
+              <th>Cliente</th>
+              <th>Status</th>
+              <th>Suprimento</th>
+              <th>Atualização</th>
+              <th></th>
 
-                </PermissionComponent>
-              </th>
             </tr>
           </thead>
           <tbody>
-            {data.map(customer => {
+            {data.map(equipment => {
               return (
-                <tr key={customer.id}>
+                <tr key={equipment.id}>
                   <td className="dark-td">{0}</td>
 
-                  <td className="dark-td">{customer.name}</td>
+                  <td className="dark-td">{equipment.description}</td>
 
-                  <td>{customer.email} </td>
+                  <td>{equipment.patrimony} </td>
+                  <td>{equipment.serial}</td>
+                  <td>{equipment.customer.name}</td>
 
-                  <td>{customer.phone}</td>
+                  <td className={equipment.status} >
+                    {equipment.status === "" && "-"}
+                    <span>
+                      <FiPrinter />
+                    </span>
 
-                  <td> {formatDate(customer.created_at)}</td>
+                    {equipment.status}
+
+                  </td>
+                  <td>{equipment.supply}</td>
+
+                  <td> {formatDate(equipment.updated_at)}</td>
 
                   <td>
                     <div className="actionButtons">
                       <button className="show" >
-                        <Link to={`/cliente/${customer.id}`}> <AiOutlineUnorderedList size={23} /></Link>
+                        <Link to={`/equipamento/${equipment.id}`}> <AiOutlineUnorderedList size={23} /></Link>
                       </button>
                       <PermissionComponent role="root, admin">
                         <button className="edit">
                           <RiEditLine size={23} />
                         </button>
 
-                        <button type="submit" className="delete" onClick={() => deleteCustomer(customer.id)}>
+                        <button type="submit" className="delete" onClick={() => deleteEquipment(equipment.id)}>
                           <VscTrash size={23} />
                         </button>
                       </PermissionComponent>

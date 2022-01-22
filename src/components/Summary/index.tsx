@@ -98,21 +98,21 @@ export function Summary() {
           <FiPackage />
         </div>
         <h2>{qtdInEstock}</h2>
-        <span>Em estoque</span>
+        <Link to="/equipamentos-em-estoque"><span>Em estoque</span></Link>
       </Card>
       <Card>
         <div className="inClientIcon">
           <RiStore3Line />
         </div>
         <h2>{qtdInClient}</h2>
-        <span>Em cliente</span>
+       <Link to="/equipamentos-em-cliente"><span>Em cliente</span></Link> 
       </Card>
       <Card>
         <div className="inMaintenanceIcon">
           <GrVmMaintenance />
         </div>
         <h2>{qtdUnderMaintenance}</h2>
-        <span>Em manutenção</span>
+       <Link to="/equipamentos-em-manutencao"> <span>Em manutenção</span></Link>
       </Card>
       <Card>
         <div className="totalIcon">

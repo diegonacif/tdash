@@ -102,11 +102,7 @@ export const ShowEquipment = (props: any) => {
             <h3>Contador Final</h3>
             <span>{equipment?.count_final}</span>
           </div>
-
-          <div className="showTransformerPatrimony">
-            <h3>Patrimônio</h3>
-            <span>{equipment?.patrimony}</span>
-          </div>  
+         
           <div className="showTransformerPatrimony">
             <h3>Transformador</h3>
             <span>{equipment?.transformer}</span>

@@ -99,16 +99,18 @@ export const CreateUser = () => {
   }
 
   // Deletar um usúario
-  async function deleteUser(id: string) {
+  async function deleteUser(id: string) {  
 
     if (window.confirm(`Deseja realmente excluir esse Usúario?`)) {
       await api.delete(`users/delete/${id}`)
-      await api.get("users")
+            await api.get("users")
         .then(response => {
           setlistProfile(response.data)
 
         })
     }
+
+    
 
   }
 
