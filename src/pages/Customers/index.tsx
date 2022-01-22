@@ -93,7 +93,7 @@ export function Customers() {
 
                   <td> {new Intl.DateTimeFormat('pt-BR').format(
                     new Date(customer.created_at)
-                  )}</td>            
+                  )}</td>
 
                   <td>
                     <div className="actionButtons">

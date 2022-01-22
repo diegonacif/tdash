@@ -9,7 +9,7 @@ import { AiOutlineLeft, AiOutlineUnorderedList } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
 import swal from "sweetalert";
-import {Table} from './styles'
+import { Table } from './styles'
 import PermissionComponent from '../../components/PermissionComponent';
 import { RiEditLine } from 'react-icons/ri';
 import { VscTrash } from 'react-icons/vsc';
@@ -202,7 +202,7 @@ export const CreateUser = () => {
               <div className="categoria">
 
                 <select onChange={event => setRoles(event.target.value)} value={roles} required>
-                  <option value="">Roles</option>
+                  <option value="">Permissão</option>
                   {data.map((role) => (
                     <option key={role.id} value={role.id} >{role.name}</option>
                   ))}
@@ -222,7 +222,7 @@ export const CreateUser = () => {
           </button>
 
 
-          <h2>Usúarios do Sistema</h2>       
+          <h2>Usúarios do Sistema</h2>
 
 
           <Table>
@@ -248,12 +248,12 @@ export const CreateUser = () => {
 
                       <td>{user.email} </td>
 
-                     {user.roles.map(role=>{
+                      {user.roles.map(role => {
 
-                       return(
-                        <td key={user.id}>{role.name}</td>
-                       )
-                     })}
+                        return (
+                          <td key={user.id}>{role.name}</td>
+                        )
+                      })}
 
                       <td> {new Intl.DateTimeFormat('pt-BR').format(
                         new Date(user.created_at)
@@ -261,7 +261,7 @@ export const CreateUser = () => {
 
                       <td>
                         <div className="actionButtons">
-                      
+
                           <PermissionComponent role="root,admin">
                             <button className="edit">
                               <RiEditLine size={23} />

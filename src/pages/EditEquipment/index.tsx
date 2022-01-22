@@ -80,7 +80,7 @@ export const EditEquipment = () => {
     })
   }
 
- 
+
 
   const [description, setDescription] = useState('')
   const [category_id, setCategory_id] = useState('')
@@ -126,7 +126,7 @@ export const EditEquipment = () => {
   async function handleCreateNewEquipment(event: FormEvent) {
     event.preventDefault()
 
-   
+
   }
 
   return (

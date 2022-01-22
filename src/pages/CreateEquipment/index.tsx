@@ -71,7 +71,7 @@ export const CreateEquipment = () => {
     event.preventDefault()
 
     await createEquipment({
-      
+
       description,
       category_id,
       customer_id,

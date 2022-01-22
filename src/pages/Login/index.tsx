@@ -19,21 +19,21 @@ const Login: React.FC = () => {
 
   const handleSubmit = useCallback(
     async (event) => {
-      event.preventDefault(); 
+      event.preventDefault();
 
       try {
 
-      await signIn({ email, password });
-      history.push("dashboard");
-   
-      } catch(e) {
+        await signIn({ email, password });
+        history.push("dashboard");
+
+      } catch (e) {
 
         swal({
           title: "Oops",
           text: "Usuário ou senha incorretos!",
           icon: "error",
-        });        
-        
+        });
+
       }
 
     },
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
   );
 
   return (
-    <Container>      
+    <Container>
       <form className="formContainer" onSubmit={handleSubmit}>
         <div className="form-group">
           <span className="logoArea" />
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
             type="text"
             onChange={(event) => setUserEmail(event.target.value)}
             placeholder="Insira seu email"
-            />
+          />
         </div>
 
         <div className="form-group">
@@ -61,7 +61,7 @@ const Login: React.FC = () => {
             type="password"
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Insira sua senha"
-            />
+          />
         </div>
 
         <div className="form-group">
