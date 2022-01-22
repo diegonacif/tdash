@@ -5,10 +5,8 @@ import { Sidebar } from '../../components/Sidebar';
 import { Summary } from "../../components/Summary";
 import { useEquipments } from '../../hooks/listEquipments';
 import { api } from '../../services/api';
-import { AiOutlineLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { TiArrowBack } from 'react-icons/ti';
-
 import { Container, Content, Form } from './styles';
 
 

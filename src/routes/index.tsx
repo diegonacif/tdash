@@ -7,7 +7,7 @@ import { Dashboard } from '../pages/Dashboard'
 import Login from '../pages/Login'
 import { ProfileUser } from '../pages/ProfileUser'
 import { ShowCustomer } from '../pages/ShowCustomer '
-import { ShowProduct } from '../pages/ShowProduct'
+import { ShowEquipment } from '../pages/ShowEquipment'
 
 
 
@@ -20,7 +20,7 @@ const Routes = () => {
         <Switch>          
             <Route path="/" exact component={Login} />
             <PrivateRoutes path="/dashboard" component={Dashboard} />
-            <PrivateRoutes path="/equipamento/:id" component={ShowProduct} />
+            <PrivateRoutes path="/equipamento/:id" component={ShowEquipment} />
             <PrivateRoutes path="/novo-equipamento" component={CreateEquipment}/>   
             <PrivateRoutes path="/editar-equipamento/:id" component={CreateEquipment}/>    
             <PrivateRoutes path="/perfil-usuario"  component={ProfileUser}/>  

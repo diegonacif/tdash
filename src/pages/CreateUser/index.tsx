@@ -5,7 +5,7 @@ import { Sidebar } from '../../components/Sidebar';
 import { Summary } from "../../components/Summary";
 import { api } from '../../services/api';
 import { Container, Content, Form } from "./styles";
-import { AiOutlineLeft, AiOutlineUnorderedList } from 'react-icons/ai'
+import { AiOutlineLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
 import swal from "sweetalert";
@@ -13,14 +13,16 @@ import { Table } from './styles'
 import PermissionComponent from '../../components/PermissionComponent';
 import { RiEditLine } from 'react-icons/ri';
 import { VscTrash } from 'react-icons/vsc';
+import moment from 'moment';
 
 
 interface ProfileUser {
   id: string;
   name: string;
   email: string;
-  roles: Array<Roles>
-  created_at: Date
+  roles: Array<Roles>;
+  created_at: Date;
+  updated_at: Date
 }
 interface Roles {
   id: string;
@@ -36,6 +38,12 @@ interface User {
 }
 
 export const CreateUser = () => {
+
+
+  //formatação de data
+  function formatDate(updated_at: Date | undefined) {
+    return moment(updated_at).format("DD/MM/YYYY")
+  }
 
   const history = useHistory()
 
@@ -213,17 +221,12 @@ export const CreateUser = () => {
 
           </div>
 
-
-
-
-
           <button type="submit">
             Cadastrar
           </button>
 
 
           <h2>Usúarios do Sistema</h2>
-
 
           <Table>
             <table>
@@ -234,6 +237,7 @@ export const CreateUser = () => {
                   <th>Email</th>
                   <th>Permissão</th>
                   <th>Criado em</th>
+                  <th>Última atualização</th>
                   <th>
                   </th>
                 </tr>
@@ -255,10 +259,9 @@ export const CreateUser = () => {
                         )
                       })}
 
-                      <td> {new Intl.DateTimeFormat('pt-BR').format(
-                        new Date(user.created_at)
-                      )}</td>
+                      <td> {formatDate(user.created_at)}</td>
 
+                      <td>{formatDate(user.updated_at)} </td>
                       <td>
                         <div className="actionButtons">
 

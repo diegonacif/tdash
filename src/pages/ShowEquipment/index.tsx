@@ -6,6 +6,8 @@ import { Sidebar } from '../../components/Sidebar';
 import { Summary } from "../../components/Summary";
 import { api } from '../../services/api';
 import { Container, Content } from "./styles";
+import moment from 'moment'
+
 
 interface Equipment {
   id: string,
@@ -28,7 +30,12 @@ interface Equipment {
   }
 }
 
-export const ShowProduct = (props: any) => {
+export const ShowEquipment = (props: any) => {
+
+  //formatação de data
+  function formatDate(updated_at:Date | undefined){
+    return moment(updated_at).format("DD/MM/YYYY")
+  }
 
   const [equipment, setEquipment] = useState<Equipment | null>(null)
 
@@ -97,18 +104,22 @@ export const ShowProduct = (props: any) => {
           </div>
 
           <div className="showTransformerPatrimony">
-            <h3>Patrimônio (transformador)</h3>
+            <h3>Patrimônio</h3>
+            <span>{equipment?.patrimony}</span>
+          </div>  
+          <div className="showTransformerPatrimony">
+            <h3>Transformador</h3>
             <span>{equipment?.transformer}</span>
-          </div>
+          </div>        
 
           <div className="showCreatedAt">
             <h3>Data do Cadastro</h3>
-            <span>{equipment?.created_at}</span>
+            <span>{formatDate(equipment?.created_at)}</span>
           </div>
 
           <div className="showUpdatedAt">
-            <h3>Data da Última Atualização</h3>
-            <span>{equipment?.updated_at}</span>
+            <h3>Última Atualização</h3>
+            <span>{formatDate(equipment?.updated_at)}</span>
           </div>
 
           <div className="showObs">

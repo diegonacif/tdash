@@ -7,7 +7,7 @@ import { AiOutlineLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-interface ProfileUser {
+interface Profile {
   id?: string;
   name: string;
   email: string;
@@ -22,7 +22,7 @@ interface Roles {
 export const ProfileUser = () => {
 
 
-  const [profile, setProfile] = useState<ProfileUser | null>(null)
+  const [profile, setProfile] = useState<Profile| null>(null)
 
   //buscar perfil do usuario
   useEffect(() => {
@@ -61,7 +61,7 @@ export const ProfileUser = () => {
         <div>
           {profile?.roles.map(prof => {
             return (
-              <div>
+              <div key={prof.id}>
                 <div>
                   <h4> permissão </h4>
                   <span>{prof.name} </span>

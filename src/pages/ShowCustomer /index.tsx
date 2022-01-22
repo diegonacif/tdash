@@ -69,7 +69,7 @@ export const ShowCustomer = (props: any) => {
           <h2> Endereços </h2>
           {customer?.adresses.map(add => {
             return (
-              <div>
+              <div key={customer.id}>
                 <div>
                   <h4> Cep </h4>
                   <span>{add.zipCode} </span>

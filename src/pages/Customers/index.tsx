@@ -1,4 +1,5 @@
 
+import moment from "moment";
 import { useEffect, useState } from "react";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { RiAddFill, RiEditLine } from "react-icons/ri";
@@ -24,7 +25,12 @@ interface Customer {
 
 
 export function Customers() {
+  
 
+   //formatação de data
+   function formatDate(updated_at:Date | undefined){
+    return moment(updated_at).format("DD/MM/YYYY")
+  }
 
   const [data, setData] = useState<Customer[]>([])
   useEffect(() => {
@@ -91,9 +97,7 @@ export function Customers() {
 
                   <td>{customer.phone}</td>
 
-                  <td> {new Intl.DateTimeFormat('pt-BR').format(
-                    new Date(customer.created_at)
-                  )}</td>
+                  <td> {formatDate(customer.created_at)}</td>
 
                   <td>
                     <div className="actionButtons">
