@@ -44,6 +44,13 @@ const style = {
 
 export const CreateEquipment = () => {
 
+
+  //função para converter primeira letra para maiuscula
+  function firstCapitalLetter(string: any) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+
   //modal 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -65,9 +72,9 @@ export const CreateEquipment = () => {
     SetName('')
 
     await api.get("categories")
-    .then(response => {
+      .then(response => {
         setCategories(response.data)
-    }).catch(error => console.log(error));
+      }).catch(error => console.log(error));
 
   }
 
@@ -177,7 +184,7 @@ export const CreateEquipment = () => {
                       label="Nome da categoria" size="small"
                       margin="dense"
                       color="success"
-                      style={{width:"30vh"}}
+                      style={{ width: "30vh" }}
                       onChange={event => SetName(event.target.value)}
                     />
                   </div>
@@ -207,7 +214,7 @@ export const CreateEquipment = () => {
           <div className="modelo">
             <TextField
               required
-              value={description}
+              value={firstCapitalLetter(description)}
               id="outlined-size-small"
               placeholder="Description"
               label="Modelo" size="small"
@@ -234,7 +241,7 @@ export const CreateEquipment = () => {
           <div className="suprimento">
             <TextField
               required
-              value={supply}
+              value={supply.toUpperCase()}
               id="outlined-size-small"
               placeholder="Suprimento"
               label="Suprimento" size="small"
@@ -247,7 +254,7 @@ export const CreateEquipment = () => {
           <div className="serie">
             <TextField
               required
-              value={serial}
+              value={serial.toUpperCase()}
               id="outlined-size-small"
               placeholder="N-Serie"
               label="N-Serie" size="small"
@@ -315,7 +322,7 @@ export const CreateEquipment = () => {
 
           <div className="obs">
             <TextField
-              value={obs}
+              value={firstCapitalLetter(obs)}
               id="outlined-size-small"
               placeholder="Observação"
               label="Observação" size="small"
