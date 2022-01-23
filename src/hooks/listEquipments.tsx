@@ -3,6 +3,9 @@ import { api } from '../services/api'
 import { useHistory } from 'react-router-dom'
 import swal from "sweetalert";
 
+interface Category {
+    name: string
+}
 
 interface Equipment {
     id: string;
@@ -16,7 +19,7 @@ interface Equipment {
     status: string;
     obs: string;
     supply: string;
-    transformer: string;
+    transformer: number;
 
 }
 
@@ -26,9 +29,12 @@ interface EquipmentsProviderProps {
 
 type EquipmentInput = Omit<Equipment, "count_final" | "id">
 
+
+
 interface EquipmentsContextData {
     equipments: Equipment[],
     createEquipment: (equipment: EquipmentInput) => Promise<void>
+    createCategory: (category: Category) => Promise<void>
 }
 
 export const EquipmentsContext = createContext<EquipmentsContextData>(
@@ -40,6 +46,7 @@ export function EquipmentProvider({ children }: EquipmentsProviderProps) {
     const history = useHistory()
 
     const [equipments, setEquipments] = useState<Equipment[]>([])
+    const [categories, setCategories] = useState<Category[]>([])
 
     useEffect(() => {
         api.get("equipments")
@@ -84,11 +91,42 @@ export function EquipmentProvider({ children }: EquipmentsProviderProps) {
 
         }
 
-    }   
+    }
+
+    //cadastrar uma nova categoria
+
+    async function createCategory({ name }: Category) {
+        try {
+
+            const response = await api.post('categories', {
+                name,            })
+
+            const category = response.data
+            setCategories([
+                ...categories,
+                category
+
+            ]);           
+            swal({
+                title: "Feito",
+                text: "Categoria cadastrado com sucesso!",
+                icon: "success",
+            });         
+
+        } catch (error) {
+            swal({
+                icon: "error",
+                title: "Oops",
+                text: "Categoria já existe!",
+            });
+
+        }
+
+    }
 
 
     return (
-        <EquipmentsContext.Provider value={{ equipments, createEquipment }}>
+        <EquipmentsContext.Provider value={{ equipments, createEquipment, createCategory }}>
             {children}
         </EquipmentsContext.Provider>
     )
