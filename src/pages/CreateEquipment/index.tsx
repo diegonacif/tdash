@@ -46,12 +46,12 @@ export const CreateEquipment = () => {
 
 
   //função para converter primeira letra para maiuscula
-  function firstCapitalLetter(string: any) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  function firstCapitalLetter(text: string) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
 
-  //modal 
+  //modal de cadastro de categoria
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
