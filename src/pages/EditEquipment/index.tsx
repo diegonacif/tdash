@@ -1,5 +1,5 @@
 import { TextField } from '@material-ui/core';
-import { FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { Sidebar } from '../../components/Sidebar';
 import { Summary } from "../../components/Summary";
@@ -10,10 +10,9 @@ import { AiOutlineLeft } from 'react-icons/ai'
 import { Link, useParams } from 'react-router-dom';
 import { TiArrowBack } from 'react-icons/ti';
 
-
 interface EquipmentId {
-  id: string
-}
+  id: string;
+};
 
 interface Equipment {
   id?: string;
@@ -28,18 +27,23 @@ interface Equipment {
   obs: string;
   supply: string;
   transformer: string;
-
-}
+  customer: {
+    name: string
+  };
+  category: {
+    name: string
+  }
+};
 
 interface Category {
   id: string;
   name: string;
-}
+};
+
 interface Customer {
   id: string;
   name: string;
-}
-
+};
 
 export const EditEquipment = () => {
 
@@ -54,18 +58,30 @@ export const EditEquipment = () => {
     status: '',
     obs: '',
     supply: '',
-    transformer: ''
+    transformer: '',
+    customer: {
+      name: ''
+    },
+    category: {
+      name: ''
+    },
   })
 
-  const id = useParams<EquipmentId>()
+  /* function updateEquipment (e: ChangeEvent<HTMLInputElement>) {
+    setEquipment({
+      ...equipment,
+      [e.target.name]: e.target.value
+    })
+  } */
+
+  const { id } = useParams<EquipmentId>();
 
   useEffect(() => {
     findEquipment(id)
+  }, [id]);
 
-  }, [id])
-
-  async function findEquipment({ id }: EquipmentId) {
-    const response = await api.put(`equipments/editar/${id}`)
+  async function findEquipment(id: string) {
+    const response = await api.get(`equipments/show/${id}`)
     setEquipment({
       description: response.data.description,
       patrimony: response.data.patrimony,
@@ -78,10 +94,15 @@ export const EditEquipment = () => {
       status: response.data.status,
       obs: response.data.obs,
       transformer: response.data.transformer,
+      customer: {
+        name: response.data.customer.name,
+      },
+      category: {
+        name: response.data.category.name,
+      },
     })
-  }
-
- 
+    //console.log(response)
+  } 
 
   const [description, setDescription] = useState('')
   const [category_id, setCategory_id] = useState('')
@@ -93,9 +114,6 @@ export const EditEquipment = () => {
   const [status, setStatus] = useState('')
   const [obs, setObs] = useState('')
   const [transformer, setTransformer] = useState('')
-
-
-
   const [categories, setCategories] = useState<Category[]>([])
 
   //buscar todas as categorias 
@@ -106,7 +124,6 @@ export const EditEquipment = () => {
       }).catch(error => console.log(error));
 
   }, [])
-
 
   const [customers, setCustomers] = useState<Customer[]>([])
 
@@ -125,10 +142,10 @@ export const EditEquipment = () => {
   };
 
   async function handleCreateNewEquipment(event: FormEvent) {
-    event.preventDefault()
-
-   
+    event.preventDefault()   
   }
+
+  console.log(equipment)
 
   return (
     <Container>
@@ -136,8 +153,6 @@ export const EditEquipment = () => {
       <Sidebar />
       <Summary />
       <Content>
-
-
 
         <Form onSubmit={handleCreateNewEquipment} >
           
@@ -150,7 +165,7 @@ export const EditEquipment = () => {
           <div className="modelo">
             <TextField
               required
-              value={description}
+              value={equipment.description}
               id="outlined-size-small"
               placeholder="Description"
               label="Modelo" size="small"
@@ -164,7 +179,7 @@ export const EditEquipment = () => {
             <TextField
               required
               type="number"
-              value={patrimony}
+              value={equipment.patrimony}
               id="outlined-size-small"
               placeholder="Patrimônio"
               label="Patrimônio" size="small"
@@ -177,7 +192,7 @@ export const EditEquipment = () => {
           <div className="suprimento">
             <TextField
               required
-              value={supply}
+              value={equipment.supply}
               id="outlined-size-small"
               placeholder="Suprimento"
               label="Suprimento" size="small"
@@ -190,7 +205,7 @@ export const EditEquipment = () => {
           <div className="serie">
             <TextField
               required
-              value={serial}
+              value={equipment.serial}
               id="outlined-size-small"
               placeholder="N-Serie"
               label="N-Serie" size="small"
@@ -202,7 +217,7 @@ export const EditEquipment = () => {
 
           <div className="contador-inicial">
             <TextField
-              value={count_initial}
+              value={equipment.count_initial}
               id="outlined-size-small"
               placeholder="Contador Inicial"
               label="Contador Inicial" size="small"
@@ -215,7 +230,7 @@ export const EditEquipment = () => {
           <div className="transformado">
             <TextField
               type="number"
-              value={transformer}
+              value={equipment.transformer}
               id="outlined-size-small"
               placeholder="Transformador"
               label="Transformador" size="small"
@@ -257,7 +272,7 @@ export const EditEquipment = () => {
 
           <div className="obs">
             <TextField
-              value={obs}
+              value={equipment.obs}
               id="outlined-size-small"
               placeholder="Observação"
               label="Observação" size="small"
@@ -273,14 +288,10 @@ export const EditEquipment = () => {
             </button>
           </div>
 
-
-
         </Form>
 
       </Content>
-
-
-
+    
     </Container>
   )
 }
