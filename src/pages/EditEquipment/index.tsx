@@ -242,7 +242,7 @@ export const EditEquipment = () => {
 
           <div className="status">
             <select onChange={event => setStatus(event.target.value)} required>
-              <option value="">Status</option>
+              <option value="">{equipment.status}</option>
               <option value={selectStatus.status = "estoque"}>estoque</option>
               <option value={selectStatus.status = "cliente"}>cliente</option>
               <option value={selectStatus.status = "manutenção"}>manutenção</option>
@@ -254,7 +254,7 @@ export const EditEquipment = () => {
 
           <div className="cliente">
             <select onChange={event => setCustomer_id(event.target.value)} value={customer_id} required>
-              <option value="">Cliente</option>
+              <option value="">{equipment.customer.name}</option>
               {customers.map((customer) => (
                 <option key={customer.name} value={customer.id}>{customer.name}</option>
               ))}
@@ -263,7 +263,7 @@ export const EditEquipment = () => {
 
           <div className="categoria">
             <select onChange={event => setCategory_id(event.target.value)} value={category_id} required>
-              <option value="">Categoria</option>
+              <option value="">{equipment.category.name}</option>
               {categories.map((category) => (
                 <option key={category.name} value={category.id} >{category.name}</option>
               ))}
