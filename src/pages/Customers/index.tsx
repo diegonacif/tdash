@@ -73,7 +73,7 @@ export function Customers() {
               <th>Criado em</th>
               <th>
                 <PermissionComponent role="root, admin">
-                  <Link to="/novo-equipamento">
+                  <Link to="/novo-cliente">
                     <button>
                       <div className="addIcon"><RiAddFill size="18" /></div>
                       <div className="addText">Adicionar</div>

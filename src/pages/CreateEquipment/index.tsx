@@ -178,7 +178,7 @@ export const CreateEquipment = () => {
                   <div className="name">
                     <TextField
                       required
-                      value={name}
+                      value={name.toUpperCase()}
                       id="outlined-size-small"
                       placeholder="Nome da catégoria"
                       label="Nome da categoria" size="small"

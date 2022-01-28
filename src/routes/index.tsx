@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom'
+import { CreateCustomer } from '../pages/CreateCustomers'
 import { CreateEquipment } from '../pages/CreateEquipment'
 import { CreateUser } from '../pages/CreateUser'
 import { Customers } from '../pages/Customers'
@@ -25,6 +26,7 @@ const Routes = () => {
             <PrivateRoutes path="/dashboard" component={Dashboard} />
             <PrivateRoutes path="/equipamento/:id" component={ShowEquipment} />
             <PrivateRoutes path="/novo-equipamento" component={CreateEquipment} />
+            <PrivateRoutes path="/novo-cliente" component={CreateCustomer} />
             <PrivateRoutes path="/editar-equipamento/:id" component={CreateEquipment} />
             <PrivateRoutes path="/perfil-usuario" component={ProfileUser} />
             <PrivateRoutes path="/gerenciar-usuarios" component={CreateUser} />
