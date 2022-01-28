@@ -92,9 +92,9 @@ export const MainTable = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map(equipment => {
+          {data.map((equipment, key) => {
             return (
-              <tr key={equipment.id}>
+              <tr key={key}>
                 <td className="dark-td">{0}</td>
 
                 <td className="dark-td">{equipment.description}</td>

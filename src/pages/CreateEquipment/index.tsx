@@ -8,13 +8,7 @@ import { api } from '../../services/api';
 import { Link } from 'react-router-dom';
 import { TiArrowBack } from 'react-icons/ti';
 import { Container, Content, Form } from './styles';
-
-//importações do modal
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-
+import { Modal, Button } from 'react-bootstrap'
 
 
 interface Category {
@@ -28,19 +22,6 @@ interface Customer {
 
 
 
-//styles do modal
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
 
 export const CreateEquipment = () => {
 
@@ -50,11 +31,10 @@ export const CreateEquipment = () => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-
-  //modal de cadastro de categoria
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  //modal bootstrap
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
   const { createCategory } = useEquipments()
@@ -159,47 +139,79 @@ export const CreateEquipment = () => {
       <Content>
 
 
+      <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Nova Categoria</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form onSubmit={handleCreateNewCategory}  >
 
-        <div>
+                <div className="name">
+                  <TextField
+                    required
+                    value={name}
+                    id="outlined-size-small"  
+                    placeholder="Nome da catégoria"
+                    label="Nome da categoria" size="small"
+                    margin="dense"
+                    color="success"
+                    style={{ width: "30vh" }}
+                    onChange={event => SetName(event.target.value)}
+                  />
+                </div>
 
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Cadastrar nova categoria
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <Form onSubmit={handleCreateNewCategory}  >
+                <div className="buttonContainer">
+                  <Button type="submit" variant="primary" onClick={handleClose} >
+                    Cadastrar
+                  </Button>
+                </div>
 
-                  <div className="name">
-                    <TextField
-                      required
-                      value={name.toUpperCase()}
-                      id="outlined-size-small"
-                      placeholder="Nome da catégoria"
-                      label="Nome da categoria" size="small"
-                      margin="dense"
-                      color="success"
-                      style={{ width: "30vh" }}
-                      onChange={event => SetName(event.target.value)}
-                    />
-                  </div>
+              </Form>
+            </Modal.Body>
+            <Modal.Header>
 
-                  <div className="buttonContainer">
-                    <button type="submit" >
-                      Cadastrar
-                    </button>
-                  </div>
-
-                </Form>
-              </Typography>
-            </Box>
+            </Modal.Header>
           </Modal>
-        </div>
+
+
+
+
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Nova Categoria</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form onSubmit={handleCreateNewCategory}  >
+
+                <div className="name">
+                  <TextField
+                    required
+                    value={name}
+                    id="outlined-size-small"  
+                    placeholder="Nome da catégoria"
+                    label="Nome da categoria" size="small"
+                    margin="dense"
+                    color="success"
+                    style={{ width: "30vh" }}
+                    onChange={event => SetName(event.target.value)}
+                  />
+                </div>
+
+                <div className="buttonContainer">
+                  <Button type="submit" variant="primary" onClick={handleClose} >
+                    Cadastrar
+                  </Button>
+                </div>
+
+              </Form>
+            </Modal.Body>
+            <Modal.Header>
+
+            </Modal.Header>
+          </Modal>
+
+
 
 
 
@@ -308,6 +320,7 @@ export const CreateEquipment = () => {
                 <option key={customer.name} value={customer.id}>{customer.name}</option>
               ))}
             </select>
+          <Link to="/novo-cliente">  <Button variant="success" > Add+ </Button>	</Link>
           </div>
 
           <div className="categoria">
@@ -317,7 +330,9 @@ export const CreateEquipment = () => {
                 <option key={category.name} value={category.id} >{category.name}</option>
               ))}
             </select>
-            <Button onClick={handleOpen}>Add +</Button>
+            <Button variant="success" onClick={handleShow}>
+              Add+
+            </Button>	
           </div>
 
           <div className="obs">

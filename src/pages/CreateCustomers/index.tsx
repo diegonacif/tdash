@@ -145,7 +145,7 @@ export const CreateCustomer = () => {
 
         <Form onSubmit={handleCreateNewCustomer} >
 
-          <h2>Cadastrar Usúario</h2>
+          <h2>Cadastrar de Cliente</h2>
 
           <div className="row1">
             <div className="name">
