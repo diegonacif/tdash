@@ -67,21 +67,28 @@ export const EditEquipment = () => {
     },
   })
 
-  /* function updateEquipment (e: ChangeEvent<HTMLInputElement>) {
-    setEquipment({
-      ...equipment,
-      [e.target.name]: e.target.value
-    })
-  } */
-
   const { id } = useParams<EquipmentId>();
 
-  useEffect(() => {
+  /* useEffect(() => {
     findEquipment(id)
-  }, [id]);
+  }, [id]); */
 
-  async function findEquipment(id: string) {
+  useEffect(() => {
+    if (id) {
+      api.get(`equipments/show/${id}`)
+      .then((response) => {
+        setValues(response.data);
+      })
+    }
+  }, [])
+
+  /* async function findEquipment(id: string) {
     const response = await api.get(`equipments/show/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      setValues(response.data);
+    })
+  
     setEquipment({
       description: response.data.description,
       patrimony: response.data.patrimony,
@@ -101,20 +108,52 @@ export const EditEquipment = () => {
         name: response.data.category.name,
       },
     })
-    //console.log(response)
-  } 
+  } */
+  
 
-  const [description, setDescription] = useState('')
+  // código criado baseado nas aulas do Vinicius Dacal
+  const initialValue = {
+    description: '',
+    patrimony: 0,
+    serial: '',
+    count_initial: '',
+    count_final: '',
+    category_id: '',
+    customer_id: '',
+    status: '',
+    obs: '',
+    supply: '',
+    transformer: '',
+    customer: {
+      name: ''
+    },
+    category: {
+      name: ''
+    },
+  }
+
+  const [values, setValues] = useState(initialValue);
+
+  function onChange(ev: { target: { name: any; value: any; }; }) {
+    const { name, value } = ev.target;
+
+    setValues({ ...values, [name]: value });
+  }
+  // fim do trecho Vinicius Dacal 
+  
+
+  //const [description, setDescription] = useState('')
   const [category_id, setCategory_id] = useState('')
   const [customer_id, setCustomer_id] = useState('')
-  const [patrimony, setPatrimony] = useState('')
-  const [serial, setSerial] = useState('')
-  const [supply, setSupply] = useState('')
-  const [count_initial, setCount_initial] = useState('')
-  const [status, setStatus] = useState('')
-  const [obs, setObs] = useState('')
-  const [transformer, setTransformer] = useState('')
-  const [categories, setCategories] = useState<Category[]>([])
+  //const [patrimony, setPatrimony] = useState('')
+  //const [serial, setSerial] = useState('')
+  //const [supply, setSupply] = useState('')
+  //const [count_initial, setCount_initial] = useState('')
+  //const [status, setStatus] = useState('')
+  //const [obs, setObs] = useState('')
+  //const [transformer, setTransformer] = useState('')
+  const [categories, setCategories] = useState<Category[]>([]) 
+  
 
   //buscar todas as categorias 
   useEffect(() => {
@@ -141,11 +180,16 @@ export const EditEquipment = () => {
     status: "estoque" || "cliente" || "manutenção" || "aguardando peças" || "sem conserto",
   };
 
-  async function handleCreateNewEquipment(event: FormEvent) {
+  /* async function handleCreateNewEquipment(event: FormEvent) {
     event.preventDefault()   
+  } */
+
+  async function onSubmit (ev: ChangeEvent<HTMLFormElement>) {
+    ev.preventDefault();
+    console.log(values)
   }
 
-  console.log(equipment)
+  console.log(values.description);
 
   return (
     <Container>
@@ -154,7 +198,7 @@ export const EditEquipment = () => {
       <Summary />
       <Content>
 
-        <Form onSubmit={handleCreateNewEquipment} >
+        <Form onSubmit={onSubmit} >
           
           <div className="rollBackButton">
             <Link to="/dashboard" style={{ textDecoration: 'none' }}> <TiArrowBack size={22} /> </Link>          
@@ -163,15 +207,24 @@ export const EditEquipment = () => {
           <h1>Editar equipamento</h1>
 
           <div className="modelo">
+            {/* <label htmlFor="description">Modelo</label>
+            <input
+              type="text"
+              id="description"
+              name="description"              
+              onChange={onChange}
+              value={values.description}
+            /> */}
             <TextField
               required
-              value={equipment.description}
+              value={values.description}
               id="outlined-size-small"
               placeholder="Description"
               label="Modelo" size="small"
               margin="dense"
               color="success"
-              onChange={event => setDescription(event.target.value)}
+              name="description"
+              onChange={onChange}
             />
           </div>
 
@@ -179,70 +232,75 @@ export const EditEquipment = () => {
             <TextField
               required
               type="number"
-              value={equipment.patrimony}
+              value={values.patrimony}
               id="outlined-size-small"
               placeholder="Patrimônio"
               label="Patrimônio" size="small"
               margin="dense"
               color="success"
-              onChange={event => setPatrimony((event.target.value))}
+              name="patrimony"
+              onChange={onChange}
             />
           </div>
 
           <div className="suprimento">
             <TextField
               required
-              value={equipment.supply}
+              value={values.supply}
               id="outlined-size-small"
               placeholder="Suprimento"
               label="Suprimento" size="small"
               margin="dense"
               color="success"
-              onChange={event => setSupply(event.target.value)}
+              name="supply"
+              onChange={onChange}
             />
           </div>          
 
           <div className="serie">
             <TextField
               required
-              value={equipment.serial}
+              value={values.serial}
               id="outlined-size-small"
               placeholder="N-Serie"
               label="N-Serie" size="small"
               margin="dense"
               color="success"
-              onChange={event => setSerial(event.target.value)}
+              name="serial"
+              onChange={onChange}
             />
           </div>          
 
           <div className="contador-inicial">
             <TextField
-              value={equipment.count_initial}
+              value={values.count_initial}
               id="outlined-size-small"
               placeholder="Contador Inicial"
               label="Contador Inicial" size="small"
               margin="dense"
               color="success"
-              onChange={event => setCount_initial((event.target.value))}
+              name="count_initial"
+              onChange={onChange}
             />
           </div>
 
           <div className="transformado">
             <TextField
               type="number"
-              value={equipment.transformer}
+              value={values.transformer}
               id="outlined-size-small"
               placeholder="Transformador"
               label="Transformador" size="small"
               margin="dense"
               color="success"
-              onChange={event => setTransformer((event.target.value))}
+              name="transformer"
+              onChange={onChange}
             />
           </div>          
 
           <div className="status">
-            <select onChange={event => setStatus(event.target.value)} required>
-              <option value="">{equipment.status}</option>
+            <select onChange={onChange} required>
+              <option value="">Status</option>
               <option value={selectStatus.status = "estoque"}>estoque</option>
               <option value={selectStatus.status = "cliente"}>cliente</option>
               <option value={selectStatus.status = "manutenção"}>manutenção</option>
@@ -254,7 +312,7 @@ export const EditEquipment = () => {
 
           <div className="cliente">
             <select onChange={event => setCustomer_id(event.target.value)} value={customer_id} required>
-              <option value="">{equipment.customer.name}</option>
+              <option value="">Cliente</option>
               {customers.map((customer) => (
                 <option key={customer.name} value={customer.id}>{customer.name}</option>
               ))}
@@ -263,7 +321,7 @@ export const EditEquipment = () => {
 
           <div className="categoria">
             <select onChange={event => setCategory_id(event.target.value)} value={category_id} required>
-              <option value="">{equipment.category.name}</option>
+              <option value="">Categoria</option>
               {categories.map((category) => (
                 <option key={category.name} value={category.id} >{category.name}</option>
               ))}
@@ -272,13 +330,13 @@ export const EditEquipment = () => {
 
           <div className="obs">
             <TextField
-              value={equipment.obs}
+              value={values.obs}
               id="outlined-size-small"
               placeholder="Observação"
               label="Observação" size="small"
               margin="dense"
               color="success"
-              onChange={event => setObs(event.target.value)}
+              onChange={onChange}
             />
           </div>
 
